@@ -1,822 +1,748 @@
 <!DOCTYPE html>
-<html lang="zh">
+
+<!-- BCI-HRP Lab index: PI-first v3.9; public HTML contains the Phase 0 protocol and formal pause-only control condition only. -->
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#050507" />
-<meta name="description" content="Human Return Lab｜AI时代，人如何返回自身？通过工作坊、对谈、研究与媒体内容，重新安放人的感受、判断、身体、关系与行动。与上海706青年空间共同发起。" />
-<title>Human Return Lab｜AI时代，人如何返回自身？</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BCI-HRP // The Human Return Protocol — Lab Collaboration Brief</title>
+<meta content="BCI-HRP // The Human Return Protocol: a PI-facing research protocol testing whether sound probes, self-prediction, phenomenological reporting, and editable AI naming support within-person self-calibration and affective-action calibration. Independent research proposal, University of Pennsylvania GSE." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="https://mellowwei.github.io/BCI-HRP-Lab/" rel="canonical"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --bg:#050507;            /* page — brand base */
-    --bg-2:#0c0d11;          /* subtle raise */
-    --panel:#15151b;         /* raised panels */
-    --card:#111015;          /* grid tiles */
-    --card-hi:#1b1a23;       /* tile hover */
-    --ink:#ECE7DB;
-    --ink-2:#bdb8ac;
-    --muted:#807d74;
-    --faint:#4a4841;
-    --line:rgba(236,231,219,.15);
-    --line-2:rgba(236,231,219,.085);
-    --warm:#D8A75B;          /* return / the human */
-    --warm-2:#e6be7d;
-    --warm-dim:rgba(216,167,91,.15);
-    --cool:#8398bd;          /* AI / the machine — sparingly */
-    --cool-dim:rgba(131,152,189,.12);
-    --mono:'Space Mono','Noto Serif SC',ui-monospace,monospace;
-    --serif:'Spectral','Noto Serif SC',Georgia,serif;
-    --sans:'DM Sans','Noto Serif SC',ui-sans-serif,system-ui,sans-serif;
-    --max:1120px;
-    --r:8px;                 /* card / panel radius */
-    --r-sm:3px;              /* tag / button / input */
+    --paper:#f4f6f6; --surface:#ffffff; --ink:#19211f; --muted:#54605d; --faint:#7b8784;
+    --line:#dce2e0; --line2:#e8eceb; --accent:#2f5f6e; --accent-deep:#244c58; --accent-soft:#e9f1f1;
+    --blue:#2b7fb8; --red:#b2455d; --blue-soft:#e7f2f8; --red-soft:#faedf0;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+    --wrap:884px;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    color:var(--ink);
-    font-family:var(--serif);
-    font-weight:400;
-    line-height:1.62;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-    overflow-x:hidden;
-    background:
-      radial-gradient(130% 90% at 50% -14%, rgba(216,167,91,.05), transparent 50%),
-      radial-gradient(90% 55% at 100% 0%, rgba(131,152,189,.04), transparent 60%),
-      var(--bg);
-    background-attachment:fixed;
+  html{scroll-behavior:smooth; scroll-padding-top:64px}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+       font-size:15px; line-height:1.62; -webkit-font-smoothing:antialiased}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline; text-underline-offset:3px}
+  h1,h2,h3{margin:0; font-weight:700; letter-spacing:-.01em; line-height:1.18}
+  p{margin:0 0 .85em}
+  .wrap{max-width:var(--wrap); margin:0 auto; padding:0 24px}
+  nav{position:sticky; top:0; z-index:50; background:rgba(244,246,246,.86);
+      backdrop-filter:saturate(160%) blur(8px); border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px}
+  .brand{font-family:var(--mono); font-size:12.5px; font-weight:500; letter-spacing:.02em; color:var(--ink); white-space:nowrap}
+  .brand b{color:var(--accent)}
+  .navlinks{display:flex; gap:12px; align-items:center; overflow-x:auto; scrollbar-width:none; padding:2px 0}
+  .navlinks::-webkit-scrollbar{display:none}
+  .navlinks a{font-size:13px; color:var(--muted); white-space:nowrap}
+  .navlinks a:hover{color:var(--accent); text-decoration:none}
+  .navlinks .zh{font-family:var(--mono); font-size:12px; color:var(--accent)}
+  header.hero{padding:62px 0 40px; border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.15em; color:var(--accent); margin:0 0 16px}
+  h1{font-size:34px; margin:0 0 14px}
+  .title-bci{display:inline-block; background:linear-gradient(90deg,var(--blue),var(--red)); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .signal-line{width:100%; max-width:520px; height:2px; margin:0 0 22px; background:linear-gradient(90deg,var(--blue),var(--accent),var(--red)); opacity:.72; border-radius:999px}
+  .microstatus{font-family:var(--mono); font-size:11.5px; color:var(--muted); margin:2px 0 20px; letter-spacing:.02em}
+  .byline{font-size:14.5px; color:var(--muted); margin:0 0 18px}
+  .byline b{color:var(--ink); font-weight:600}
+  .lede{font-size:17px; line-height:1.55; color:var(--ink); max-width:62ch; margin:0 0 22px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 26px}
+  .chip{font-family:var(--mono); font-size:11px; letter-spacing:.03em; color:var(--muted); border:1px solid var(--line); border-radius:100px; padding:5px 11px; background:var(--surface)}
+  .cta{display:flex; flex-wrap:wrap; gap:10px}
+  .btn{font-family:var(--sans); font-size:13.5px; font-weight:600; cursor:pointer; border:1px solid var(--accent); border-radius:8px; padding:9px 16px; background:var(--accent); color:#fff; transition:background .15s}
+  .btn:hover{background:var(--accent-deep)}
+  .btn-ghost{background:transparent; color:var(--accent)}
+  .btn-ghost:hover{background:var(--accent-soft)}
+  section{padding:46px 0; border-bottom:1px solid var(--line2)}
+  .sec-eyebrow{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:var(--accent); margin:0 0 10px}
+  h2{font-size:22px; margin:0 0 8px}
+  .sub{font-size:15px; color:var(--muted); max-width:64ch; margin:0 0 22px}
+  .body{max-width:68ch}
+  .body p{color:#222b29}
+  .claim{background:var(--accent-soft); border:1px solid #cfe0df; border-left:3px solid var(--accent); border-radius:10px; padding:22px 24px; margin:0 0 20px}
+  .claim .q{font-size:18px; font-weight:600; color:var(--accent-deep); line-height:1.45; margin:0}
+  .grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); margin:6px 0 0}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:15px 16px}
+  .card h3{font-size:14.5px; margin:0 0 5px}
+  .card p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.5}
+  .card .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--accent); text-transform:uppercase; display:block; margin:0 0 6px}
+  .steps{display:grid; gap:12px; margin:6px 0 0}
+  .step{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:start; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+  .step .n{font-family:var(--mono); font-size:12px; font-weight:500; color:#fff; background:var(--accent); border-radius:6px; min-width:30px; height:26px; display:flex; align-items:center; justify-content:center}
+  .step h3{font-size:14.5px; margin:0 0 3px}
+  .step p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.5}
+  .tbl{width:100%; border-collapse:collapse; margin:8px 0 0; font-size:13.5px}
+  .tbl th{font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; text-align:left; color:var(--accent); font-weight:500; padding:0 14px 8px 0; border-bottom:1.5px solid var(--accent); vertical-align:bottom}
+  .tbl td{padding:11px 14px 11px 0; border-bottom:1px solid var(--line2); color:#2a3331; vertical-align:top; line-height:1.5}
+  .tbl td:first-child{font-weight:600; color:var(--ink); white-space:nowrap}
+  .tbl.wide td:first-child{white-space:normal}
+  .scroll{overflow-x:auto}
+  .note{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:15px 17px; margin:16px 0 0}
+  .data-clarify{border-left:3px solid var(--blue); background:linear-gradient(90deg,var(--blue-soft),#fff)}
+  .note .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; color:var(--accent); text-transform:uppercase; display:block; margin:0 0 6px}
+  .note p{margin:0; font-size:13.5px; color:#2a3331; line-height:1.55}
+  .warn{border-left:3px solid #b5732f; background:#fbf5ee}
+  .warn .k{color:#9c5f22}
+  .contact{display:grid; gap:0; margin:6px 0 0; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--surface)}
+  .row{display:grid; grid-template-columns:148px 1fr; gap:14px; padding:11px 16px; border-bottom:1px solid var(--line2)}
+  .row:last-child{border-bottom:0}
+  .row .k{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--accent); padding-top:1px}
+  .row .v{font-size:14px; color:var(--ink)}
+  .files{display:grid; gap:9px; margin:6px 0 0}
+  .file{display:grid; grid-template-columns:1fr; gap:1px; padding:11px 14px; border:1px solid var(--line); border-radius:9px; background:var(--surface)}
+  .file a{font-size:14px; font-weight:600}
+  .file span{font-size:12.5px; color:var(--muted)}
+  ul.plain{margin:6px 0 0; padding-left:18px}
+  ul.plain li{margin:0 0 6px; color:#2a3331; line-height:1.5; font-size:14px}
+  .two{display:grid; gap:16px; grid-template-columns:1fr 1fr; margin:6px 0 0}
+  .panel{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+  .panel h3{font-size:14px; margin:0 0 9px; font-family:var(--mono); font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:var(--accent)}
+  .qa-list{display:grid; gap:10px; margin:8px 0 0}
+  .qa{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+  .qa h3{font-size:14.5px; margin:0 0 5px}
+  .qa p{font-size:13.5px; color:var(--muted); margin:0; line-height:1.52}
+  .briefwrap{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:6px 0 0}
+  .briefwrap pre{font-family:var(--mono); font-size:12.5px; line-height:1.6; color:#2a3331; white-space:pre-wrap; margin:12px 0 0}
+  footer{padding:34px 0 48px; color:var(--faint); font-size:12.5px}
+  footer .wrap{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; justify-content:space-between}
+  footer .mono{font-family:var(--mono); letter-spacing:.03em}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
+  @media (max-width:680px){
+    h1{font-size:27px} .lede{font-size:15.5px} h2{font-size:19px}
+    .two{grid-template-columns:1fr} .row{grid-template-columns:1fr; gap:3px}
+    nav .wrap{height:auto; min-height:56px; align-items:flex-start; padding-top:12px; padding-bottom:10px}
+    .brand{padding-top:2px} .navlinks{max-width:100%; padding-bottom:2px} .navlinks a{font-size:12.5px}
+    section{padding:38px 0}
   }
-  a{color:inherit;text-decoration:none}
-  button,input{font:inherit;color:inherit}
-  ::selection{background:var(--warm);color:#0a0805}
-
-  /* i18n */
-  .en{display:none}
-  body.lang-en .zh{display:none}
-  body.lang-en .en{display:inline}
-
-  .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}
-  .mono{font-family:var(--mono)}
-  .sans{font-family:var(--sans)}
-
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:11px;letter-spacing:.26em;text-transform:uppercase;
-    color:var(--warm);font-weight:700;display:inline-flex;align-items:center;gap:10px;
-  }
-  .eyebrow::before{content:"";width:16px;height:1px;background:var(--warm);opacity:.7}
-
-  h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.01em}
-  h1{font-size:clamp(40px,6.4vw,78px);line-height:1.04}
-  h2{font-size:clamp(28px,3.8vw,50px);line-height:1.1}
-  h3{font-size:21px;line-height:1.3}
-  p{margin:0}
-  .accent{color:var(--warm);font-style:italic}
-  .lead{font-size:clamp(17px,1.7vw,21px);color:var(--ink-2);line-height:1.72;max-width:60ch}
-
-  .tag{
-    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-    padding:5px 10px;border:1px solid var(--line);border-radius:var(--r-sm);color:var(--ink-2);
-    display:inline-flex;font-weight:700;
-  }
-
-  .btn{
-    font-family:var(--sans);font-weight:500;font-size:14px;
-    display:inline-flex;align-items:center;gap:9px;
-    padding:12px 20px;border-radius:var(--r-sm);border:1px solid var(--line);
-    cursor:pointer;transition:border-color .2s,background .2s,color .2s,transform .2s;
-    background:transparent;
-  }
-  .btn:hover{transform:translateY(-1px)}
-  .btn-primary{background:var(--warm);color:#0a0805;border-color:var(--warm)}
-  .btn-primary:hover{background:var(--warm-2);border-color:var(--warm-2)}
-  .btn-ghost:hover{border-color:var(--warm);color:var(--warm)}
-  .btn .arw{font-family:var(--mono);font-size:13px}
-
-  a:focus-visible,button:focus-visible,input:focus-visible{
-    outline:2px solid var(--warm);outline-offset:3px;border-radius:var(--r-sm);
-  }
-
-  /* ── Header ── */
-  header{
-    position:fixed;top:0;left:0;right:0;z-index:60;
-    transition:background .25s,border-color .25s;
-    border-bottom:1px solid transparent;
-  }
-  header.scrolled{background:rgba(7,7,10,.86);backdrop-filter:blur(16px) saturate(1.1);border-color:var(--line-2)}
-  nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.02em;white-space:nowrap}
-  .brand .glyph{width:26px;height:26px;position:relative;flex:none;border:1px solid var(--warm);border-radius:50%}
-  .brand .glyph::before{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:var(--warm);transform:translate(-50%,-50%)}
-  .brand .glyph::after{content:"";position:absolute;left:2px;top:50%;width:20px;height:1px;background:var(--warm);opacity:.45;transform:translateY(-50%)}
-  .nav-links{display:flex;gap:26px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-2)}
-  .nav-links a{transition:color .18s}
-  .nav-links a:hover{color:var(--warm)}
-  .nav-right{display:flex;align-items:center;gap:14px}
-  .lang-btn{
-    font-family:var(--mono);font-size:12px;letter-spacing:.1em;font-weight:700;
-    background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:7px 12px;cursor:pointer;
-    transition:border-color .2s,color .2s,background .2s;
-  }
-  .lang-btn:hover{border-color:var(--warm);color:var(--warm);background:var(--card-hi)}
-  .menu-btn{display:none;background:transparent;border:0;font-size:22px;cursor:pointer;color:var(--ink)}
-
-  /* ── Section rhythm ── */
-  section{padding:clamp(64px,8vw,108px) 0}
-  .rule{height:1px;background:var(--line-2);width:100%}
-  .sec-head{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:clamp(38px,5vw,60px);max-width:var(--max)}
-  .sec-head .top{display:flex;align-items:baseline;justify-content:space-between;gap:30px;flex-wrap:wrap}
-  .sec-head .desc{color:var(--muted);max-width:62ch;font-size:15.5px;line-height:1.7}
-
-  /* ── Hero ── */
-  .hero{padding-top:clamp(118px,15vh,162px);padding-bottom:clamp(52px,7vw,88px);position:relative}
-  .hero-grid{display:grid;grid-template-columns:1.28fr .72fr;gap:clamp(36px,5vw,72px);align-items:center}
-  .kicker{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:26px}
-  .partner{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);margin-bottom:22px;text-transform:uppercase}
-  .partner b{color:var(--ink-2);font-weight:700}
-  .hero h1{margin-bottom:26px;letter-spacing:-.018em}
-  .hero .lead{margin-bottom:30px}
-  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
-  .notes{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--muted)}
-  .notes span{display:flex;align-items:center;gap:8px}
-  .notes i{width:5px;height:5px;border-radius:50%;background:var(--warm);opacity:.8;display:inline-block}
-
-  /* signature: returning instrument */
-  .instrument{
-    border:1px solid var(--line);border-radius:var(--r);
-    background:linear-gradient(180deg,var(--panel),#101014);
-    padding:24px 22px 20px;box-shadow:0 24px 60px -30px rgba(0,0,0,.8);
-  }
-  .instrument .lab{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
-  .instrument .lab .r{color:var(--cool)}
-  .wave-box{margin:16px 0 6px;position:relative}
-  .wave{width:100%;height:auto;display:block;overflow:visible}
-  .wave-caption{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
-  .wave-caption .mid{color:var(--warm)}
-  .returns-list{list-style:none;margin:18px 0 0;padding:14px 0 0;border-top:1px solid var(--line-2);display:grid;gap:1px}
-  .returns-list li a{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;padding:7px 2px;transition:color .18s,padding .2s}
-  .returns-list li a:hover{color:var(--warm);padding-left:6px}
-  .returns-list .n{font-family:var(--mono);font-size:10px;color:var(--warm);letter-spacing:.1em}
-  .returns-list .nm{font-size:15px}
-  .returns-list .en-sm{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
-
-  /* ── Manifesto ── */
-  .manifesto-head h2{max-width:20ch}
-  .man-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-  .man-card{background:var(--card);padding:clamp(24px,3vw,38px);transition:background .25s}
-  .man-card:hover{background:var(--card-hi)}
-  .man-card .idx{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--warm);text-transform:uppercase;margin-bottom:20px;display:block}
-  .man-card .strong{font-size:20px;line-height:1.4;margin-bottom:12px;display:block;color:var(--ink)}
-  .man-card p{color:var(--muted);font-size:15px;line-height:1.68}
-
-  /* ── Framework ── */
-  .fw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-  .return-card{background:var(--card);padding:clamp(24px,2.6vw,32px);min-height:230px;display:flex;flex-direction:column;cursor:pointer;position:relative;transition:background .25s}
-  .return-card:hover,.return-card.active{background:var(--card-hi)}
-  .return-card.active{box-shadow:inset 2px 0 0 var(--warm)}
-  .return-card .rn{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--warm);text-transform:uppercase}
-  .return-card h3{margin:16px 0 12px;font-size:24px}
-  .return-card .concept{font-family:var(--mono);font-size:11px;letter-spacing:.03em;color:var(--muted);line-height:1.9;flex:1}
-  .return-card .q{margin-top:18px;padding-top:16px;border-top:1px solid var(--line-2);color:var(--ink);font-style:italic;font-size:15.5px;line-height:1.5}
-
-  /* ── Workshops ── */
-  .ws-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .ws-card{border:1px solid var(--line);border-radius:var(--r);padding:clamp(24px,2.6vw,32px);background:var(--card);transition:border-color .22s,transform .22s,background .22s}
-  .ws-card:hover{border-color:rgba(216,167,91,.45);transform:translateY(-2px);background:var(--card-hi)}
-  .ws-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
-  .ws-card h3{font-size:23px;margin-bottom:11px}
-  .ws-card .d{color:var(--muted);font-size:14.5px;line-height:1.66;margin-bottom:16px}
-  .ws-card .steps{display:flex;flex-wrap:wrap;gap:7px}
-  .ws-card .steps span{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--ink-2);padding:4px 9px;border:1px solid var(--line-2);border-radius:var(--r-sm)}
-
-  /* ── Dialogues ── */
-  .dlg-list{display:grid;gap:1px;background:var(--line-2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-  .dlg{background:var(--card);display:grid;grid-template-columns:62px 1fr auto;gap:20px;align-items:center;padding:22px clamp(16px,2vw,26px);transition:background .2s,padding-left .22s}
-  .dlg:hover{background:var(--card-hi);padding-left:calc(clamp(16px,2vw,26px) + 6px)}
-  .dlg .no{font-family:var(--mono);font-size:13px;color:var(--warm);letter-spacing:.08em}
-  .dlg h3{font-size:19px;font-weight:400}
-  .dlg .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;text-align:right;white-space:nowrap}
-
-  /* ── Pipeline ── */
-  .pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-  .pipe-step{border:1px solid var(--line);border-radius:var(--r);padding:24px 18px;position:relative;background:var(--card)}
-  .pipe-step .pn{font-family:var(--mono);font-size:26px;color:var(--warm);line-height:1;font-weight:400}
-  .pipe-step strong{display:block;font-size:16px;margin:14px 0 8px;font-weight:500}
-  .pipe-step p{font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;color:var(--muted);line-height:1.8}
-  .pipe-step:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:var(--mono);color:var(--faint);z-index:2}
-
-  /* ── Toolkit ── */
-  .tk-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:stretch}
-  .proto{border:1px solid var(--line);border-radius:var(--r);padding:clamp(26px,3vw,38px);position:relative;overflow:hidden;background:radial-gradient(120% 80% at 100% 0%,var(--warm-dim),transparent 58%),var(--panel);box-shadow:0 24px 60px -34px rgba(0,0,0,.8)}
-  .proto h3{font-size:27px;margin:16px 0 8px}
-  .proto .sub{color:var(--muted);font-size:14.5px;margin-bottom:24px}
-  .proto-line{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:18px}
-  .proto-line input{width:100%;padding:13px 14px;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:15px;outline:none;transition:border-color .2s}
-  .proto-line input::placeholder{color:var(--muted);font-style:italic}
-  .proto-line input:focus{border-color:var(--warm)}
-  .proto-out{padding:20px;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--bg);font-size:19px;line-height:1.55;min-height:74px;display:flex;align-items:center;color:var(--ink);font-style:italic}
-  .proto-out b{color:var(--warm);font-style:normal;font-weight:500}
-  .proto-sign{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:10px;min-height:16px;transition:color .3s}
-  .proto-sign.on{color:var(--warm)}
-  .proto-sign .ln{flex:1;height:1px;background:currentColor;opacity:.4}
-
-  .tool-list{display:grid;gap:11px;grid-auto-rows:1fr}
-  .tool{border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:var(--card);display:flex;align-items:center;justify-content:space-between;gap:16px;transition:border-color .2s,background .2s}
-  .tool:hover{border-color:rgba(216,167,91,.45);background:var(--card-hi)}
-  .tool strong{display:block;font-size:16px;font-weight:500;margin-bottom:3px}
-  .tool span{font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;color:var(--muted);line-height:1.5}
-  .tool .dl{font-family:var(--mono);font-size:15px;color:var(--warm);flex:none}
-
-  /* ── Media ── */
-  .media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .media-card{border:1px solid var(--line);border-radius:var(--r);padding:clamp(24px,2.6vw,30px);min-height:230px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;background:var(--card);transition:border-color .22s,background .22s}
-  .media-card:hover{border-color:rgba(216,167,91,.45);background:var(--card-hi)}
-  .media-card .mk{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--cool);margin-bottom:14px;display:block}
-  .media-card:nth-child(2) .mk{color:var(--warm)}
-  .media-card h3{font-size:23px;line-height:1.25;font-weight:500}
-  .media-card p{color:var(--muted);font-size:13.5px;line-height:1.6;margin-top:16px}
-
-  /* ── Collaborate ── */
-  .collab{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:stretch}
-  .collab-main{border:1px solid var(--line);border-radius:var(--r);padding:clamp(28px,3.4vw,44px);background:var(--panel)}
-  .collab-main h2{margin:16px 0 18px;max-width:16ch}
-  .collab-types{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:26px;background:var(--line-2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-  .collab-types span{background:var(--card);padding:14px 16px;font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--ink-2)}
-  .contact{border:1px solid var(--warm);border-radius:var(--r);padding:clamp(28px,3.4vw,40px);display:flex;flex-direction:column;justify-content:space-between;gap:26px;background:radial-gradient(120% 90% at 100% 0%,var(--warm-dim),transparent 60%),var(--panel)}
-  .contact h3{font-size:29px;line-height:1.28;margin:16px 0 12px}
-  .contact .cp{color:var(--ink-2);font-size:14.5px;line-height:1.6}
-  .copy-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r-sm);margin-top:12px;font-family:var(--mono);font-size:13px;background:var(--bg)}
-  .copy-row .wx b{color:var(--warm);letter-spacing:.05em}
-  .copy-btn{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--warm);color:#0a0805;border:0;border-radius:var(--r-sm);padding:7px 12px;cursor:pointer;font-weight:700;transition:background .2s}
-  .copy-btn:hover{background:var(--warm-2)}
-  .dir{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);margin-top:12px;text-transform:uppercase}
-
-  /* ── Footer ── */
-  footer{padding:clamp(46px,6vw,68px) 0 58px;border-top:1px solid var(--line)}
-  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:36px;flex-wrap:wrap}
-  .foot-brand{max-width:30ch}
-  .foot-brand p{color:var(--muted);font-size:14px;margin-top:14px}
-  .foot-quote{max-width:44ch;font-size:18px;line-height:1.55;color:var(--ink-2);font-style:italic}
-  .foot-slogan{margin-top:clamp(38px,5vw,56px);padding-top:28px;border-top:1px solid var(--line-2);font-family:var(--mono);font-size:clamp(13px,1.6vw,15px);letter-spacing:.06em;color:var(--warm);text-align:center}
-
-  /* ── reveal: visible by default; animate only when JS marks <html> ready ── */
-  .reveal{opacity:1;transform:none}
-  html.ready .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
-  html.ready .reveal.visible{opacity:1;transform:none}
-
-  /* ── responsive ── */
-  @media(max-width:920px){
-    .hero-grid,.tk-grid,.collab{grid-template-columns:1fr}
-    .fw-grid,.media-grid{grid-template-columns:repeat(2,1fr)}
-    .man-grid,.ws-grid{grid-template-columns:1fr}
-    .pipe{grid-template-columns:1fr}
-    .pipe-step:not(:last-child)::after{content:"↓";right:50%;transform:translateX(50%);top:auto;bottom:-9px}
-    .nav-links{display:none;position:absolute;left:24px;right:24px;top:64px;flex-direction:column;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;font-size:14px}
-    .nav-links.open{display:flex}
-    .menu-btn{display:block}
-    .instrument{margin-top:8px}
-  }
-  @media(max-width:560px){
-    .wrap{width:min(100% - 32px,var(--max))}
-    .fw-grid,.media-grid,.collab-types{grid-template-columns:1fr}
-    .dlg{grid-template-columns:46px 1fr}
-    .dlg .role{display:none}
-    .proto-line{grid-template-columns:1fr}
-    .foot-grid{flex-direction:column}
-    h1{font-size:clamp(34px,10vw,44px)}
-  }
-  @media(prefers-reduced-motion:reduce){
-    *{scroll-behavior:auto}
-    html.ready .reveal{opacity:1;transform:none;transition:none}
-  }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important} }
 </style>
 </head>
-<body class="lang-zh">
+<body>
+<a id="top"></a>
+<nav>
+<div class="wrap">
+<div class="brand">BCI-HRP <b>//</b> Human Return Protocol</div>
+<div class="navlinks">
+<a href="#claim">Claim</a>
+<a href="#research-questions">RQs</a>
+<a href="#positioning">Positioning</a>
+<a href="#translation">Pathway</a>
+<a href="#why">Why</a>
+<a href="#protocol">Protocol</a>
+<a href="#pilot">Pilot</a>
+<a href="#risks">Risks</a>
+<a href="#validity">Validity</a>
+<a href="#methods">Methods</a>
+<a href="#fit">Lab fit</a>
+<a href="#lab-gains">Lab gains</a>
+<a href="#staged-request">Staged request</a>
+<a href="#related">Related</a>
+<a href="#safety">Safety</a>
+<a href="#faq">FAQ</a>
+<a href="#about">About</a>
+<a href="#collaborate">Collaborate</a>
+<a class="zh" href="https://mellowwei.github.io/BCI-HRP-Lab/zh.html">中文</a>
+</div>
+</div>
+</nav>
+<header class="hero">
+<div class="wrap">
+<p class="eyebrow">Lab collaboration brief · independent research proposal</p>
+<h1><span class="title-bci">BCI-HRP</span> // The Human Return Protocol</h1>
+<p class="byline"><b>Wei Jueran (魏珏然) · Mellow</b> — M.S.Ed. in Learning Sciences and Technologies, University of Pennsylvania GSE</p>
+<p class="lede">A protocol-first, lab-facing research proposal testing whether sound probes, self-prediction, phenomenological reporting, and editable AI naming can support within-person self-calibration and affective-action calibration — with autonomic and neural signals as optional proxies, not as hidden truth.</p>
+<div aria-hidden="true" class="signal-line"></div>
+<p class="microstatus">Current scope: Phase 0 Sound-QDR software protocol. Custom BCI hardware is future-facing, not required for the pilot.</p>
+<div class="chips">
+<span class="chip">No diagnosis</span>
+<span class="chip">No treatment</span>
+<span class="chip">No state induction</span>
+<span class="chip">Not a consumer device</span>
+<span class="chip">Protocol-first</span>
+<span class="chip">Independent proposal</span>
+</div>
+<div class="cta">
+<a class="btn" href="#claim">Read the 3-min brief</a>
 
-<header id="header">
-  <div class="wrap">
-    <nav>
-      <a class="brand" href="#top" aria-label="Human Return Lab">
-        <span class="glyph" aria-hidden="true"></span>
-        <span>Human Return Lab</span>
-      </a>
-      <div class="nav-links" id="navLinks">
-        <a href="#manifesto"><span class="zh">宣言</span><span class="en">Manifesto</span></a>
-        <a href="#framework"><span class="zh">框架</span><span class="en">Framework</span></a>
-        <a href="#workshops"><span class="zh">工作坊</span><span class="en">Workshops</span></a>
-        <a href="#dialogues"><span class="zh">对谈</span><span class="en">Dialogues</span></a>
-        <a href="#toolkit"><span class="zh">工具</span><span class="en">Toolkit</span></a>
-        <a href="#collaborate"><span class="zh">合作</span><span class="en">Collaborate</span></a>
-      </div>
-      <div class="nav-right">
-        <button class="lang-btn" id="langBtn" aria-label="Switch language">
-          <span class="zh">EN</span><span class="en">中文</span>
-        </button>
-        <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      </div>
-    </nav>
-  </div>
+</div>
+</div>
 </header>
+<section id="claim">
+<div class="wrap">
+<p class="sec-eyebrow">One testable claim</p>
+<h2>A single falsifiable question, before anything else.</h2>
+<div class="claim">
+<p class="q">Does a sound-probe + self-prediction + phenomenological report + editable-naming protocol improve within-person self-calibration and affective-action calibration — and do autonomic/neural proxies add explanatory value beyond self-report alone?</p>
+</div>
+<div class="note data-clarify">
+<span class="k">Not another brain decoder</span>
+<p><b>This is not another brain decoder.</b> BCI-HRP is a calibration protocol for subjective experience — where the participant, not the signal, holds the final interpretation.</p>
+</div>
+<div class="body">
+<p><b>Research stance.</b> The first study is feasibility and construct calibration, not clinical validation. “Self-calibration” and “Human Return” are candidate constructs — a partner lab is free to narrow, rename, reject, or revise them before preregistration.</p>
+</div>
+<div class="note">
+<span class="k">Naming boundary</span>
+<p><b>BCI-HRP</b> is used here as the project name and long-range research direction. The immediate pilot is not a custom BCI build. The first empirical object is the protocol: prediction → probe → report → editable naming → agency events.</p>
+</div>
+<div class="grid">
+<div class="card"><span class="k">Not a device pitch</span><p>The first study does not require any custom hardware.</p></div>
+<div class="card"><span class="k">Not mind-reading</span><p>Proxies do not reveal meaning or “true” emotion.</p></div>
+<div class="card"><span class="k">Not fixed doctrine</span><p>The lab has authority to redesign the construct.</p></div>
+<div class="card"><span class="k">Not therapy</span><p>No treatment or crisis-detection claim is made.</p></div>
+</div>
+</div>
+</section>
+<section id="research-questions">
+<div class="wrap">
+<p class="sec-eyebrow">Research questions and rationale</p>
+<h2>What the first lab study would actually test.</h2>
+<p class="sub">The first study is not designed to prove clinical benefit or product efficacy. It asks whether the full protocol adds calibration value beyond ordinary pause, self-report, and task learning.</p>
+<div class="grid">
+<div class="card">
+<span class="k">RQ1 · Feasibility</span>
+<h3>Can participants complete the protocol?</h3>
+<p>Can participants understand and complete pre-probe prediction, sound-probe listening, post-probe phenomenological report, editable AI naming, and agency controls?</p>
+</div>
+<div class="card">
+<span class="k">RQ2 · Added value</span>
+<h3>Does the full protocol add calibration value?</h3>
+<p>Does full BCI-HRP provide calibration value beyond pause-only and self-report-only baselines?</p>
+</div>
+<div class="card">
+<span class="k">RQ3 · Construct validity</span>
+<h3>Is prediction change really self-calibration?</h3>
+<p>If prediction error decreases, is that decrease supported by qualia granularity, naming stability, action-tendency clarity, object/fittingness reports, and agency events?</p>
+</div>
+<div class="card">
+<span class="k">RQ4 · Proxy value</span>
+<h3>Do optional signals add explanatory value?</h3>
+<p>Do HRV, EDA, EEG, fNIRS, or motion proxies explain more than first-person prediction and report alone?</p>
+</div>
+<div class="card">
+<span class="k">RQ5 · Safety</span>
+<h3>Do agency controls function as intended?</h3>
+<p>Do participants understand and use reject, rename, edit, delete, stop, ground, and skip as meaningful actions rather than errors?</p>
+</div>
+</div>
+<div class="note data-clarify">
+<span class="k">Rationale</span>
+<p>Affective BCI, neurofeedback, and music-emotion systems often estimate, classify, or modulate affective states. BCI-HRP takes a complementary route: it tests whether a structured protocol can help participants predict, describe, revise, and own the meaning of their own bodily-affective-action states. Sound is a repeatable probe, AI labels are editable hypotheses, and agency events are primary data.</p>
+</div>
+<div class="note">
+<span class="k">Analysis order</span>
+<p>The pilot pre-specifies a primary → secondary hierarchy, so findings are not selected after the data arrives. RQ1 (feasibility) and RQ5 (safety) gate the study; <b>RQ2 — added value over pause-only and self-report-only baselines — is the primary inferential question</b>; RQ3 (construct validity) and RQ4 (proxy value) are secondary and read only when the RQ2 pattern holds. Mixed outcomes (e.g. RQ2 supported but RQ3 not) are reported as mixed, not reframed.</p>
+</div>
+</div>
+</section>
+<section id="positioning">
+<div class="wrap">
+<p class="sec-eyebrow">Positioning</p>
+<h2>Not “music + BCI + emotion regulation,” but a participant-centered calibration layer.</h2>
+<p class="sub">The project sits near affective BCI, brain-computer music interfaces, EEG/fNIRS music-emotion studies, and neurofeedback. Its differentiating object is not a new sensor or a new emotion classifier, but a protocol that protects interpretation while making calibration testable.</p>
+<div class="grid">
+<div class="card"><span class="k">Traditional BCI</span><h3>Signal decoding / control</h3><p>Often emphasizes decoding neural signals for external control, intention inference, or state estimation.</p></div>
+<div class="card"><span class="k">Affective computing</span><h3>Emotion classification</h3><p>Often estimates affective categories or valence/arousal from physiological, behavioral, or multimodal features.</p></div>
+<div class="card"><span class="k">Neurofeedback / BCMI</span><h3>Feedback or regulation</h3><p>Often trains users toward calm, focus, coherence, or adaptive emotional feedback through sound or music.</p></div>
+<div class="card"><span class="k">BCI-HRP</span><h3>Participant-owned calibration</h3><p>Uses sound as a probe, asks the participant to predict and report first, treats AI labels as editable hypotheses, and records reject / rename / edit / delete as agency data.</p></div>
+</div>
+<div class="note">
+<span class="k">Operational difference</span>
+<p>BCI-HRP does not ask whether a system can infer the user’s “true emotion.” It asks whether a structured protocol can improve how a participant predicts, describes, revises, and owns the meaning of their own bodily-affective-action state.</p>
+</div>
 
-<main id="top">
+<div class="note data-clarify">
+<span class="k">For partner labs</span>
+<p>This is designed as a low-risk Phase 0 pilot with reusable protocol materials, explicit failure criteria, and a publishable question about interpretive agency in affective systems. The full partner-lab value proposition appears after the Lab Fit matrix.</p>
+</div>
 
-  <!-- ── HERO ── -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="kicker">
-          <span class="tag"><span class="zh">公共哲学</span><span class="en">Public Philosophy</span></span>
-          <span class="tag">AI × <span class="zh">主体性</span><span class="en">Subjectivity</span></span>
-        </div>
-        <div class="partner">
-          <span class="zh">与 <b>上海706青年空间</b> 共同发起</span>
-          <span class="en">In collaboration with <b>706 Youth Space, Shanghai</b></span>
-        </div>
-        <h1>
-          <span class="zh">AI 能看见我，<br>但不能替我，<span class="accent">定义我</span>。</span>
-          <span class="en">AI can see me —<br>but it cannot <span class="accent">define me</span>, for me.</span>
-        </h1>
-        <p class="lead">
-          <span class="zh">AI 正在扩展人的表达、理解、创造与行动。它能做的越来越多——正因如此，更该弄清：哪些事，仍然只能、也应当，由你亲自完成。Human Return Lab 用工作坊、对谈、研究与媒体，重新安放人的感受、判断、身体、关系与行动。</span>
-          <span class="en">AI keeps extending how we express, understand, create, and act. It can do more and more — which is exactly why the question sharpens: what still can only, and should only, be done by you. Human Return Lab re-places the human — feeling, judgment, body, relation, action — through workshops, dialogues, research, and media.</span>
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#workshops"><span class="zh">查看工作坊</span><span class="en">View workshops</span> <span class="arw">→</span></a>
-          <a class="btn btn-ghost" href="#framework"><span class="zh">阅读框架</span><span class="en">Read the framework</span></a>
-        </div>
-        <div class="notes">
-          <span><i></i><span class="zh">不是 AI 工具课</span><span class="en">Not a tool tutorial</span></span>
-          <span><i></i><span class="zh">不是反 AI</span><span class="en">Not anti-AI</span></span>
-          <span><i></i><span class="zh">是一场返身实验</span><span class="en">A practice of returning</span></span>
-        </div>
-      </div>
+</div>
+</section>
 
-      <!-- signature: the returning instrument -->
-      <aside class="instrument" aria-label="Return instrument">
-        <div class="lab">
-          <span><span class="zh">返身之器</span><span class="en">The Instrument</span></span>
-          <span class="r">427Hz</span>
-        </div>
-        <div class="wave-box">
-          <svg class="wave" viewBox="0 0 320 88" role="img" aria-label="A point drifts from center and returns">
-            <line x1="8" y1="44" x2="312" y2="44" stroke="rgba(236,231,219,.16)" stroke-width="1"/>
-            <line x1="160" y1="28" x2="160" y2="60" stroke="rgba(216,167,91,.5)" stroke-width="1"/>
-            <circle class="ret-dot" cx="160" cy="44" r="5" fill="#D8A75B">
-              <animate attributeName="cx" values="160;266;54;160" keyTimes="0;0.34;0.68;1"
-                       dur="9s" calcMode="spline"
-                       keySplines="0.42 0 0.2 1;0.42 0 0.2 1;0.42 0 0.2 1" repeatCount="indefinite"/>
-              <animate attributeName="r" values="5;4;4;5" keyTimes="0;0.34;0.68;1" dur="9s" repeatCount="indefinite"/>
-            </circle>
-          </svg>
-        </div>
-        <div class="wave-caption">
-          <span><span class="zh">带走</span><span class="en">carried off</span></span>
-          <span class="mid"><span class="zh">自己</span><span class="en">self</span></span>
-          <span><span class="zh">带走</span><span class="en">carried off</span></span>
-        </div>
-        <ul class="returns-list">
-          <li><a href="#framework"><span class="n">01</span><span class="nm"><span class="zh">返回感受</span><span class="en">Return to Feeling</span></span><span class="en-sm">Feeling</span></a></li>
-          <li><a href="#framework"><span class="n">02</span><span class="nm"><span class="zh">返回判断</span><span class="en">Return to Judgment</span></span><span class="en-sm">Judgment</span></a></li>
-          <li><a href="#framework"><span class="n">03</span><span class="nm"><span class="zh">返回表达</span><span class="en">Return to Expression</span></span><span class="en-sm">Expression</span></a></li>
-          <li><a href="#framework"><span class="n">04</span><span class="nm"><span class="zh">返回身体</span><span class="en">Return to the Body</span></span><span class="en-sm">Body</span></a></li>
-          <li><a href="#framework"><span class="n">05</span><span class="nm"><span class="zh">返回关系</span><span class="en">Return to Relation</span></span><span class="en-sm">Relation</span></a></li>
-          <li><a href="#framework"><span class="n">06</span><span class="nm"><span class="zh">返回行动</span><span class="en">Return to Action</span></span><span class="en-sm">Action</span></a></li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+<section id="why">
+<div class="wrap">
+<p class="sec-eyebrow">Why this matters</p>
+<h2>Most systems either over-interpret the user or under-describe experience.</h2>
+<div class="body">
+<p>Emotion tools often force people into coarse labels like <i>calm</i> or <i>stressed</i>. Consumer neurotech often overclaims hidden insight from weak physiological proxies. Music tools often optimize for mood playlists without modeling a person's prediction, interpretive control, or safe exit. This protocol aims at the missing middle: sound becomes a controlled probe, the user predicts first, physiology stays a proxy, and AI explanations stay editable and rejectable.</p>
+</div>
+<div class="grid">
+<div class="card"><span class="k">Gap 01</span><p>Too much reliance on coarse affect labels; too little on qualia granularity.</p></div>
+<div class="card"><span class="k">Gap 02</span><p>Too much sensor authority; too little user-owned interpretation.</p></div>
+<div class="card"><span class="k">Gap 03</span><p>Too much sound-as-mood-control; too little sound-as-probe with falsifiable outcomes.</p></div>
+<div class="card"><span class="k">Gap 04</span><p>Too much ethics rhetoric; too little interaction-level safety design.</p></div>
+</div>
+<div class="note data-clarify">
+<span class="k">Affective-action stance</span>
+<p>BCI-HRP does not treat emotion as a hidden internal state, a universal neural fingerprint, or a score to be made simply more positive. It treats felt state as an embodied, action-oriented relation to the world. Sound probes are used as repeatable situations in which participants can notice bodily feeling, track action tendency, identify emotional affordances, and revise the meaning of their own state. The AI layer functions as an editable affective scaffold, not as a diagnostic authority.</p>
+</div>
+</div>
+</section>
+<section id="protocol">
+<div class="wrap">
+<p class="sec-eyebrow">Scientific layer model</p>
+<h2>Keep the architecture rich, but scientifically legible.</h2>
+<p class="sub">One sound-response session moves through seven layers, from the physical stimulus to user-owned interpretation.</p>
+<div class="steps">
+<div class="step"><div class="n">01</div><div><h3>Sound event</h3><p>The actual stimulus: a fixed audio file with documented acoustic properties and event markers.</p></div></div>
+<div class="step"><div class="n">02</div><div><h3>Sensory contact</h3><p>How the sound enters — hearing, bodily resonance, respiration coupling, attentional capture.</p></div></div>
+<div class="step"><div class="n">03</div><div><h3>Autonomic / body response</h3><p>HRV, EDA, movement, temperature, and body self-report as within-person response traces.</p></div></div>
+<div class="step"><div class="n">04</div><div><h3>Affective-action construction</h3><p>How bodily change becomes felt pressure, relief, activation, safety, or overwhelm — and how it opens or closes possible actions.</p></div></div>
+<div class="step"><div class="n">05</div><div><h3>Cognitive prediction</h3><p>What the user expected before the sound, and whether prediction error decreases over sessions.</p></div></div>
+<div class="step"><div class="n">06</div><div><h3>Object relation and fittingness</h3><p>What the felt state is about, what it makes possible, and whether it fits the situation, object, and value relation.</p></div></div>
+<div class="step"><div class="n">07</div><div><h3>Interpretive agency</h3><p>Accept, edit, reject, rename, delete, stop, ground, and skip — as user-owned interpretive control.</p></div></div>
+</div>
+<p class="sec-eyebrow" style="margin-top:34px">Scientific anchors</p>
+<div class="grid">
+<div class="card"><h3>Interoception</h3><p>Body-state sensing and interpretation.</p></div>
+<div class="card"><h3>Allostasis</h3><p>Regulation and recovery, rather than static homeostasis.</p></div>
+<div class="card"><h3>Constructed emotion</h3><p>Emotion is not simply read out from signals.</p></div>
+<div class="card"><h3>Predictive processing</h3><p>Pre-probe prediction error is a real operational target.</p></div>
+<div class="card"><h3>Personal informatics</h3><p>Collect → reflect → act, without turning data into absolute truth.</p></div>
+<div class="card"><h3>Music-based intervention rigor</h3><p>Stimuli should be documented, repeatable, and narrow in claim.</p></div>
+</div>
+<p class="sec-eyebrow" style="margin-top:34px">Protocol snapshot</p>
+<h2 style="font-size:19px">A PI should be able to judge fit in three minutes.</h2>
+<div class="grid">
+<div class="card"><span class="k">Core unit</span><h3>Session, not device</h3><p>The research unit is one sound-response session: prediction, sound probe, report, editable naming, and agency events.</p></div>
+<div class="card"><span class="k">Primary test</span><h3>Prediction error</h3><p>Whether within-person pre-probe prediction error changes across sessions and transfers beyond memorized clips.</p></div>
+<div class="card"><span class="k">Safety principle</span><h3>Agency before interpretation</h3><p>AI summaries are always editable and rejectable. Stop, Ground, Delete, Rename, and Skip are primary data — not failures.</p></div>
+</div>
+</div>
+</section>
+<section id="pilot">
+<div class="wrap">
+<p class="sec-eyebrow">Pilot design</p>
+<h2>Small, within-subject, ablated.</h2>
+<div class="scroll">
+<table class="tbl wide">
+<tr><th>Item</th><th>Lab-facing version</th></tr>
+<tr><td>Study type</td><td>Within-subject feasibility pilot; repeated sessions; non-clinical participants; no treatment claim.</td></tr>
+<tr><td>Sample rationale</td><td>N = 5–12 is for Phase 0 feasibility only: usability, data-quality estimation, adverse-UX discovery, and variance estimates. If feasibility evidence supports scaling, a partner-lab-supported follow-up would require a larger sample through IRB and recruitment infrastructure.</td></tr>
+<tr><td>Primary outcome</td><td>Within-person change in pre-probe prediction error across sessions.</td></tr>
+<tr><td>Secondary outcomes</td><td>State-naming stability, qualia granularity, interpretive-agency events, completion rate, discomfort / stop events.</td></tr>
+<tr><td>Signals</td><td>Self-report first; HRV/RMSSD, EDA/SCR, respiration, temperature, motion second; EEG/fNIRS optional and lab-dependent.</td></tr>
+<tr><td>Controls / ablations</td><td>Minimum: pause-only vs. full BCI-HRP protocol. Preferred: A) pause-only; B) sound + report; C) sound + prediction + report; D) sound + prediction + report + editable AI naming. Wearable / EEG / fNIRS extensions remain optional. Condition order should be counterbalanced where feasible to reduce order and fatigue effects.</td></tr>
+<tr><td>Analysis</td><td>Mixed-effects model, event-locked descriptive analysis, ablation comparison, missing-data report, artifact report, individual plots.</td></tr>
+</table>
+</div>
+<div class="note warn">
+<span class="k">Confound control — stimulus familiarity vs. self-calibration</span>
+<p>Because the sound files are fixed and repeated, a fall in prediction error could reflect memorizing a specific clip rather than improved self-calibration. To separate the two: (1) test prediction on <b>unheard</b> stimuli from the same family (a transfer test); (2) and/or analyze first-exposure prediction error only; (3) and include a novel-vs-familiar factor in the model. State-naming stability carries the same familiarity confound and is reported with the same control.</p>
+</div>
+<div class="note">
+<span class="k">Pause-only control</span>
+<p>The protocol must show value beyond pausing. If gains are fully explained by a pause-only condition, the result should not be interpreted as sound-probe or editable-naming calibration. To keep this baseline comparable across participants, every pause condition uses one fixed instruction — e.g. “Please pause what you were doing and sit quietly; you may close your eyes; do not use your phone, and do not deliberately meditate or do anything in particular — simply stop the task you were on.”</p>
+</div>
+<p class="sec-eyebrow" style="margin-top:34px">Session flow</p>
+<div class="steps">
+<div class="step"><div class="n">T0</div><div><h3>Consent</h3><p>Sound family, intensity ceiling, stop method, data sharing, and AI-summary permission.</p></div></div>
+<div class="step"><div class="n">T1</div><div><h3>Baseline</h3><p>Short rest plus self-report; optional physiological baseline.</p></div></div>
+<div class="step"><div class="n">T2</div><div><h3>Predict</h3><p>User predicts the direction and intensity of state change before the sound.</p></div></div>
+<div class="step"><div class="n">T3</div><div><h3>Probe</h3><p>Fixed, documented sound file with event markers and visible stop controls.</p></div></div>
+<div class="step"><div class="n">T4</div><div><h3>Report</h3><p>User reports body, affect, perception, action tendency, and meaning.</p></div></div>
+<div class="step"><div class="n">T5</div><div><h3>Rename</h3><p>User accepts, edits, rejects, renames, deletes, or exits.</p></div></div>
+</div>
+<p class="sec-eyebrow" style="margin-top:34px">Phase path</p>
+<div class="grid">
+<div class="card"><span class="k">Phase 0</span><h3>Software only</h3><p>Sound-QDR protocol: prediction, report, rename, and agency logs — no hardware.</p></div>
+<div class="card"><span class="k">Phase 0b</span><h3>Expanded sample follow-up</h3><p>If Phase 0 is feasible, test construct stability and effect estimates with a larger partner-lab-supported sample.</p></div>
+<div class="card"><span class="k">Phase 1</span><h3>Add wearable proxies</h3><p>Existing devices for HRV, EDA, respiration, motion, and temperature.</p></div>
+<div class="card"><span class="k">Phase 2</span><h3>Optional EEG / fNIRS</h3><p>A listening-state extension only when lab conditions and data quality justify it.</p></div>
+</div>
+</div>
+</section>
+<section id="risks">
+<div class="wrap">
+<p class="sec-eyebrow">Risks and falsification criteria</p>
+<h2>The first study is designed to surface failure modes, not to claim efficacy.</h2>
+<p class="sub">BCI-HRP becomes stronger if its risks are explicit. A Phase 0 pilot should show whether the protocol is understandable, safe, and data-generating — and where the construct fails, shrinks, or needs to be renamed.</p>
+<div class="grid">
+<div class="card">
+<span class="k">Risk 01</span>
+<h3>Task learning, not self-calibration</h3>
+<p>A drop in prediction error may mean participants learned the task or memorized clips. Use novel-vs-familiar stimuli, transfer tests, first-exposure analyses, and post-study suspicion checks.</p>
+</div>
+<div class="card">
+<span class="k">Risk 02</span>
+<h3>Demand characteristics</h3>
+<p>Participants may infer what the protocol wants them to report. Use neutral prompts, blinded sound-family labels where possible, and treat “I don’t know / no change” as valid data.</p>
+</div>
+<div class="card">
+<span class="k">Risk 03</span>
+<h3>Small or heterogeneous effects</h3>
+<p>Sound-probe effects may be small, inconsistent, or person-specific. Phase 0 should estimate variance and usability, not prove efficacy.</p>
+</div>
+<div class="card">
+<span class="k">Risk 04</span>
+<h3>Ecological validity</h3>
+<p>Fixed, repeatable sounds improve control but may not reflect everyday listening. Later phases can test personalized sounds, daily-life contexts, or transfer beyond the lab.</p>
+</div>
+<div class="card">
+<span class="k">Risk 05</span>
+<h3>Proxies may add no value</h3>
+<p>EEG, fNIRS, HRV, EDA, or motion may fail to explain more than first-person reports. If so, they remain optional proxies rather than becoming required evidence.</p>
+</div>
+<div class="card">
+<span class="k">Risk 06</span>
+<h3>The construct may need revision</h3>
+<p>A partner PI may narrow, split, rename, or reject “self-calibration” or “Human Return.” That is treated as construct calibration, not project failure.</p>
+</div>
+<div class="card">
+<span class="k">Risk 07</span>
+<h3>Ordinary pause may explain gains</h3>
+<p>If pause-only produces the same change as the full protocol, BCI-HRP should not claim sound-probe or editable-naming value. The protocol must show added structure beyond ordinary pausing or journaling.</p>
+</div>
+</div>
+<div class="note warn">
+<span class="k">Stop condition</span>
+<p>If participants cannot understand the prediction/report task, if agency controls are rarely used or misunderstood, if discomfort is elevated, or if prediction changes collapse under transfer tests, the protocol should be revised before adding sensors or larger samples.</p>
+</div>
+</div>
+</section>
+<section id="validity">
+<div class="wrap">
+<p class="sec-eyebrow">Construct validity strategy</p>
+<h2>Prediction-error improvement is a candidate indicator, not sufficient evidence.</h2>
+<p class="sub">The protocol should not equate “better prediction” with “self-calibration.” A self-calibration interpretation requires converging evidence across prediction, description, naming, action, fittingness, and agency.</p>
+<div class="grid">
+<div class="card"><span class="k">Primary candidate</span><h3>Prediction-error change</h3><p>Pre-probe predicted state vector vs. post-probe reported state vector. Useful, but insufficient by itself.</p></div>
+<div class="card"><span class="k">Triangulation</span><h3>Experience-structure measures</h3><p>Qualia granularity, state-naming stability, action-tendency clarity, object-relation reports, and situation / value fittingness.</p></div>
+<div class="card"><span class="k">Agency validity</span><h3>Reject / rename / edit / delete</h3><p>If participants simply accept AI labels without revision, the protocol may be measuring compliance rather than interpretive agency.</p></div>
+<div class="card"><span class="k">Suspicion check</span><h3>Demand-characteristics probe</h3><p>Post-study questions ask what participants thought the study was testing and whether AI labels or repeated sounds shaped their answers.</p></div>
+</div>
+<div class="note data-clarify">
+<span class="k">Interpretation boundary</span>
+<p>If prediction-error improvement does not transfer to novel stimuli, does not co-occur with richer phenomenological reports, or is explained by suspicion checks, the result should be interpreted as task learning, stimulus familiarity, or demand characteristics — not as self-calibration.</p>
+</div>
+<div class="note">
+<span class="k">Decision rule</span>
+<p>Fixed before data collection. A self-calibration reading requires all three: (a) the primary within-person prediction-error change; (b) <b>transfer to unheard stimuli — a necessary condition</b>; and (c) convergence on at least two triangulation measures (qualia granularity, naming stability, action-tendency clarity, object/fittingness, agency revision). If transfer fails, or fewer than two triangulation measures converge, the result is reported as task learning, familiarity, or demand characteristics — not self-calibration. For Phase 0, these rules guide interpretation and next-step decisions; they do not constitute powered efficacy claims.</p>
+</div>
+</div>
+</section>
+<section id="methods">
+<div class="wrap">
+<p class="sec-eyebrow">Operational definitions</p>
+<h2>Make “Human Return” measurable without reducing it to a hidden signal.</h2>
+<div class="grid">
+<div class="card"><span class="k">Primary</span><h3>Self-prediction error</h3><p>Pre-probe predicted vector vs. post-probe reported vector. Candidate dimensions: tension, clarity, body return, movement urge, emotional pressure, safety. Direction match + normalized absolute error.</p></div>
+<div class="card"><span class="k">Secondary</span><h3>State-naming stability</h3><p>Across repeated sound families, whether the user reuses, refines, or stabilizes personal labels without being pulled into AI labels.</p></div>
+<div class="card"><span class="k">Construct</span><h3>Qualia granularity</h3><p>A shift from generic terms (“good / bad”) toward differentiated bodily–affective–perceptual–action descriptions.</p></div>
+<div class="card"><span class="k">Agency</span><h3>Interpretive agency</h3><p>Stop, Ground, Delete, Reject, Rename, Skip, and Edit recorded as primary events, not UI afterthoughts.</p></div>
+</div>
+<p class="sec-eyebrow" style="margin-top:34px">Affective-action calibration dimensions</p>
+<h2 style="font-size:19px">Emotion is measured as a five-dimensional structure, not as a hidden inner fingerprint.</h2>
+<div class="scroll">
+<table class="tbl wide">
+<tr><th>Dimension</th><th>What it captures</th><th>Candidate fields</th></tr>
+<tr><td>Bodily feeling</td><td>Breath, tension, heaviness, warmth, numbness, fatigue, relaxation, or body-return.</td><td>body_tension, body_return, breath_note, movement_note</td></tr>
+<tr><td>Felt quality</td><td>The texture and tone of experience: pressure, brightness, flatness, sharpness, warmth, drift, clarity.</td><td>felt_quality, qualia_terms, emotional_pressure, clarity</td></tr>
+<tr><td>Action tendency</td><td>What the state makes the participant want to do: approach, avoid, stop, write, speak, rest, move, contact, ask for help.</td><td>action_tendency, action_readiness</td></tr>
+<tr><td>Object / relation</td><td>What the emotion is about: a person, task, place, body part, future, loss, threat, opportunity, or value relation.</td><td>material_object, formal_object, core_relational_theme</td></tr>
+<tr><td>Fittingness</td><td>Whether the felt state fits the situation, object, and value relation — not whether it is simply positive.</td><td>emotion_fit, situation_fit, value_object_fit, affordance_update</td></tr>
+</table>
+</div>
+<div class="note">
+<span class="k">Measurement boundary</span>
+<p>These dimensions are proposed as exploratory and partner-lab revisable. They supplement, rather than replace, prediction-error analysis and optional physiological/neural proxies.</p>
+</div>
+<p class="sec-eyebrow" style="margin-top:34px">Minimal data schema</p>
+<div class="scroll">
+<table class="tbl wide">
+<tr><th>Field group</th><th>Example fields</th><th>Purpose</th></tr>
+<tr><td>Session</td><td>participant_hash, session_id, session_date, consent_version</td><td>Track repeated sessions without exposing identity.</td></tr>
+<tr><td>Stimulus</td><td>stimulus_id, file_hash, loudness_norm, event_markers, playback_onset</td><td>Keep sound probes fixed and reproducible.</td></tr>
+<tr><td>Prediction</td><td>pre_tension, pre_clarity, pre_body_return, pre_action_urge, confidence</td><td>Compute prediction error.</td></tr>
+<tr><td>Post-report</td><td>post_vector, free_text, qualia_terms, action_tendency, material_object, formal_object, emotion_fit, situation_fit, affordance_update, meaning_note</td><td>Capture subjective and affective-action structure without claiming hidden truth.</td></tr>
+<tr><td>Agency</td><td>stop, ground, reject, rename, edit, delete, skip, timestamp</td><td>Measure interpretive control and safety behavior.</td></tr>
+<tr><td>Optional sensors</td><td>hrv_rmssd, eda_scr, respiration_proxy, temp, motion, eeg_quality_flag</td><td>Use proxies only when data quality permits.</td></tr>
+</table>
+</div>
+<p class="sec-eyebrow" style="margin-top:34px">Technical feasibility</p>
+<h2 style="font-size:19px">The pilot should not depend on custom hardware.</h2>
+<div class="scroll">
+<table class="tbl wide">
+<tr><th>Domain</th><th>Realistic now</th><th>Risk</th><th>Boundary / mitigation</th></tr>
+<tr><td>Sound probes</td><td>Frozen, documented audio with loudness normalization, event markers, and source sheets.</td><td>Stimuli too broad or too aestheticized.</td><td>Fixed library, auditable sources, reproducible playback.</td></tr>
+<tr><td>Wearables</td><td>Existing research-grade devices for HRV, EDA, respiration proxy, skin temperature, motion.</td><td>EDA latency, motion artifact, slow temperature response.</td><td>Quality flags, recovery-window analysis, artifact reporting, within-person interpretation.</td></tr>
+<tr><td>EEG / fNIRS</td><td>Optional lab extension, not core proof. A listening-state proxy only.</td><td>Fp1/Fp2 eye/muscle artifact; fNIRS co-wear complexity.</td><td>Predefined artifact rejection, quality thresholds, optional exclusion, no meaning-decoding.</td></tr>
+<tr><td>Synchronization</td><td>Shared event log, measured onset, LSL or lab-equivalent time sync.</td><td>Clock drift and unsynchronized devices.</td><td>Reject millisecond-level claims unless timing is verified.</td></tr>
+<tr><td>AI role</td><td>Optional production aid and editable report summarizer.</td><td>AI over-packaging / suggestion bias.</td><td>Frozen stimuli for the study; AI labels are rejectable, not treated as truth.</td></tr>
+</table>
+</div>
+<div class="two">
+<div class="panel"><h3>What stays optional</h3><p style="margin:0; font-size:13.5px; color:var(--muted)">EEG/fNIRS, custom head-patch form factors, and full triadic hardware should remain optional until a protocol-first pilot shows enough value to justify the engineering complexity.</p></div>
+<div class="panel"><h3>What can already be done</h3><p style="margin:0; font-size:13.5px; color:var(--muted)">A fixed sound library, pre/post self-prediction scales, qualitative naming prompts, agency-event logging, and an exportable session schema are already enough to start Phase 0.</p></div>
+</div>
+</div>
+</section><section id="translation">
+<div class="wrap">
+<p class="sec-eyebrow">Long-range translational pathway</p>
+<h2>From protocol validation to staged research extension.</h2>
+<p class="sub">The current PI-facing study validates the protocol, not a finished product. The long-range system direction is a participant-owned interoceptive and affective-action calibration system: not a meditation app, not an emotion detector, and not a brain decoder.</p>
+<div class="claim">
+<p class="q">Meditation trains attention and regulation; BCI-HRP trains interoceptive prediction, bodily-affective awareness, and interpretive agency.</p>
+</div>
+<div class="grid">
+<div class="card">
+<span class="k">Phase 0: Software implementation</span>
+<h3>Session software + ordinary headphones</h3>
+<p>Runs the core protocol: sound probe, pre-prediction, post-report, editable AI naming, agency events, and exportable session data.</p>
+</div>
+<div class="card">
+<span class="k">Phase 1: Wearable proxy integration</span>
+<h3>Wristband-based body-reference prompts</h3>
+<p>HRV, EDA, skin temperature, and motion are treated as optional body-reference proxies, not as direct emotion labels.</p>
+</div>
+<div class="card">
+<span class="k">Phase 2: Headphone-based probe delivery</span>
+<h3>Headphone-based probe interface</h3>
+<p>Supports calibrated playback, voice or touch prediction/report, safe exit, and grounding mode. Sound remains a probe, not a treatment stimulus.</p>
+</div>
+<div class="card">
+<span class="k">Phase 3: Optional neuroimaging extension</span>
+<h3>Optional EEG / fNIRS extension for lab contexts</h3>
+<p>EEG / fNIRS can be used to study rapid auditory response, rhythm following, and slower hemodynamic state changes — only as optional proxies.</p>
+</div>
+</div>
+<div class="note data-clarify">
+<span class="k">Translation boundary</span>
+<p>The system pathway is staged. Phase 0 can be built and studied without custom hardware. Future wearables do not “read emotion”; they provide body and neural reference signals inside a workflow where the participant keeps final interpretive authority.</p>
+</div>
+<div class="note">
+<span class="k">IP / ownership boundary</span>
+<p>Implementation-specific collaboration, use of lab resources, human-subject data collection, and IP / ownership questions should be clarified before moving beyond an initial fit call or high-level protocol discussion.</p>
+</div>
+</div>
+</section>
+<section id="fit">
+<div class="wrap">
+<p class="sec-eyebrow">Lab fit matrix</p>
+<h2>Different labs can enter from different parts of the protocol.</h2>
+<p class="sub">This is not a single-discipline pitch. A first call should identify which version of the project fits the lab.</p>
+<div class="scroll">
+<table class="tbl wide">
+<tr><th>Lab type</th><th>Why this fits</th><th>What the lab can lead</th></tr>
+<tr><td>HCI / Personal Informatics</td><td>User-owned interpretation, editable labels, agency events, safety-by-interaction.</td><td>Interface design, interaction logs, user study, safety flow, diary protocol.</td></tr>
+<tr><td>Music Cognition / Neuroaesthetics</td><td>Sound as a controlled probe; expectation, familiarity, predictability; qualia naming.</td><td>Stimulus design, listening protocol, musical-feature selection, experience measures.</td></tr>
+<tr><td>Wearable Sensing</td><td>HRV / EDA / respiration / motion as within-person physiological proxies.</td><td>Device selection, signal quality, artifact criteria, synchronization, feasibility analysis.</td></tr>
+<tr><td>Affective Computing</td><td>Editable AI hypotheses, non-diagnostic state support, anti-suggestion design.</td><td>Feedback boundary, human-in-the-loop interpretation, bias / suggestion checks.</td></tr>
+<tr><td>Computational Neuroscience</td><td>Prediction error, cross-session change, multimodal alignment, individual time-series.</td><td>Modeling, inference, mixed-effects design, event-locked analysis, falsification criteria.</td></tr>
+</table>
+</div>
+</div>
+</section>
 
-  <div class="wrap"><div class="rule"></div></div>
+<section id="lab-gains">
+<div class="wrap">
+<p class="sec-eyebrow">What a partner lab gains</p>
+<h2>A low-risk pilot, a reusable protocol, and a publishable question.</h2>
+<p class="sub">A partner lab is not being asked to validate a finished invention or commit to a large study upfront. The collaboration begins with a low-risk Phase 0 research opportunity: software-only, non-clinical, explicit failure criteria, a pause-only baseline, and a participant-centered contribution to HCI, personal informatics, affective computing, or music cognition. If Phase 0 is feasible, the collaboration can stage toward a larger partner-lab-supported follow-up.</p>
+<div class="grid">
+<div class="card"><span class="k">Concrete pilot</span><h3>Low-cost Phase 0 study</h3><p>A small feasibility study that can be narrowed, renamed, or rejected before preregistration, with failure modes treated as useful findings.</p></div>
+<div class="card"><span class="k">Reusable materials</span><h3>Protocol + schema + stimulus framework</h3><p>Sound-QDR session logic, exportable data schema, stimulus metadata, agency-event logging, and construct-validity checks.</p></div>
+<div class="card"><span class="k">Publication angle</span><h3>Interpretive agency in affective systems</h3><p>A publishable research question about how affective AI / BCI systems can preserve participant-owned interpretation rather than optimize only for classification.</p></div>
+<div class="card"><span class="k">Future seed line</span><h3>Wearable / neuroimaging / AI-feedback extensions</h3><p>If Phase 0 is promising, the lab can extend the protocol toward wearable proxies, EEG/fNIRS listening studies, or AI-feedback ethics.</p></div>
+<div class="card"><span class="k">Collaborator contribution</span><h3>Design, build, analysis, drafting</h3><p>I bring the construct, sound-probe design, software implementation, data structure, analysis work, and manuscript drafting labor.</p></div>
+</div>
+<div class="note data-clarify">
+<span class="k">Exchange model</span>
+<p>The intended Phase 0 exchange is deliberately light: I bring the candidate construct, prototype logic, sound design, implementation labor, scheduling/session-running labor, data handling, analysis, and drafting. A partner lab would bring methodological rigor, safety review, IRB pathway or faculty oversight if appropriate, and the authority to reshape the study. Lab recruitment infrastructure, physical space, equipment, or RA support would only be discussed for a later expanded follow-up if Phase 0 justifies scaling.</p>
+</div>
+</div>
+</section>
 
-  <!-- ── MANIFESTO ── -->
-  <section id="manifesto">
-    <div class="wrap">
-      <div class="sec-head manifesto-head reveal">
-        <div class="eyebrow"><span class="zh">返身宣言</span><span class="en">Manifesto</span></div>
-        <div class="top">
-          <h2>
-            <span class="zh">我们不反 AI，也不神化 AI。<br>我们只问：哪些，仍然只能由你亲自完成？</span>
-            <span class="en">We are not against AI, nor do we worship it.<br>We ask only: what can be done by no one but you?</span>
-          </h2>
-        </div>
-        <p class="desc">
-          <span class="zh">AI 正从工具变成一种新的能力环境。要紧的不只是它能做什么，而是它如何改变人理解自己、表达自己、判断现实、进入行动的方式。</span>
-          <span class="en">AI is turning from a tool into a new environment of capability. What matters is not only what it can do, but how it reshapes the way we understand ourselves, speak, judge what's real, and step into action.</span>
-        </p>
-      </div>
-      <div class="man-grid reveal">
-        <article class="man-card">
-          <span class="idx">01 · <span class="zh">表达</span><span class="en">Expression</span></span>
-          <span class="strong"><span class="zh">AI 可以生成语言，不能替你拥有它。</span><span class="en">AI can generate language, not own it for you.</span></span>
-          <p><span class="zh">生成一句话，不等于拥有它。最终的选择、修改、承担与签字，仍然属于你。</span><span class="en">Generating a sentence is not the same as owning it. The final choice, the edit, the responsibility, the signature — still yours.</span></p>
-        </article>
-        <article class="man-card">
-          <span class="idx">02 · <span class="zh">解释</span><span class="en">Interpretation</span></span>
-          <span class="strong"><span class="zh">AI 可以做镜子，不能做法官。</span><span class="en">AI can be a mirror, not a judge.</span></span>
-          <p><span class="zh">被 AI 说中，不等于被 AI 定义。命盘非判决，模型也一样——它给出映照，你保留解释权。</span><span class="en">Being read accurately is not being defined. A chart is not a verdict, and neither is a model — it reflects; you keep the right to interpret.</span></p>
-        </article>
-        <article class="man-card">
-          <span class="idx">03 · <span class="zh">身体</span><span class="en">Embodiment</span></span>
-          <span class="strong"><span class="zh">AI 可以读取身体数据，不能替你亲自感受。</span><span class="en">AI can read your body's data, not feel it for you.</span></span>
-          <p><span class="zh">身体数据是线索，不是判决。先感受，再命名；先自己，再模型。</span><span class="en">Body data is a clue, not a verdict. Feel first, then name; self first, then model.</span></p>
-        </article>
-        <article class="man-card">
-          <span class="idx">04 · <span class="zh">行动</span><span class="en">Agency</span></span>
-          <span class="strong"><span class="zh">AI 可以替你行动，不能替你划定边界。</span><span class="en">AI can act for you, not draw your limits.</span></span>
-          <p><span class="zh">能执行任务，不等于有权替你决定。授权、退出、停止与责任，必须始终可追踪、可撤回。</span><span class="en">Executing a task is not the authority to decide for you. Grant, exit, stop, and responsibility must stay traceable — and revocable.</span></p>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <div class="wrap"><div class="rule"></div></div>
+<section id="staged-request">
+<div class="wrap">
+<p class="sec-eyebrow">Staged collaboration request</p>
+<h2>Small immediate ask; larger study only if Phase 0 justifies it.</h2>
+<p class="sub">The immediate request is intentionally small: a 15-minute fit call and, if appropriate, a Phase 0 feasibility study with N=5–12. Phase 0 is small by design because it tests whether the protocol is understandable, safe, data-generating, and worth scaling.</p>
+<div class="grid">
+<div class="card"><span class="k">Immediate step</span><h3>Fit call + Phase 0 feasibility</h3><p>Test whether the protocol belongs in the lab’s methodological frame. For Phase 0, I would handle scheduling, session running, data handling, analysis, and drafting under the appropriate IRB determination or approval.</p></div>
+<div class="card"><span class="k">Gate condition</span><h3>Only scale if the construct survives</h3><p>Expansion requires feasibility, acceptable safety, transfer beyond memorized stimuli, and convergence across at least two triangulation measures.</p></div>
+<div class="card"><span class="k">Expanded follow-up</span><h3>Partner-lab-supported larger sample</h3><p>If Phase 0 is promising, a Phase 0b follow-up could then discuss use of lab recruitment infrastructure, physical space, equipment, or study-running support by mutual agreement.</p></div>
+<div class="card"><span class="k">Later extensions</span><h3>Wearable or neural proxies remain optional</h3><p>Only after the software protocol shows value should HRV, EDA, EEG, fNIRS, or other proxies be added to test explanatory gain beyond reports.</p></div>
+</div>
+<div class="note data-clarify">
+<span class="k">Scope boundary</span>
+<p>In short: Phase 0 is intentionally small and does not ask the lab for physical space, equipment, or RA support. The reason to seek a partner lab is methodological and compliance-oriented: IRB pathway, safety review, construct validity, and a design that can scale only if the feasibility evidence justifies it.</p>
+</div>
+</div>
+</section>
 
-  <!-- ── FRAMEWORK ── -->
-  <section id="framework">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="eyebrow"><span class="zh">六个返回</span><span class="en">Six Returns</span></div>
-        <div class="top"><h2><span class="zh">六个返回</span><span class="en">Six Returns</span></h2></div>
-        <p class="desc">
-          <span class="zh">同一个主问题，从六个入口展开。每个入口都能成为工作坊，也能成为研究议题、嘉宾对谈或媒体专题。</span>
-          <span class="en">One core question, six ways in. Each entry can become a workshop — or a research theme, a dialogue, a media piece.</span>
-        </p>
-      </div>
-      <div class="fw-grid reveal">
-        <article class="return-card active" tabindex="0">
-          <span class="rn">Return 01</span>
-          <h3><span class="zh">返回感受</span><span class="en">Return to Feeling</span></h3>
-          <p class="concept"><span class="zh">感质主权 · 情绪标签 · AI 情绪分析 · 身体信号</span><span class="en">qualia sovereignty · emotion labels · affect analysis · body signals</span></p>
-          <p class="q"><span class="zh">AI 可以描述我的感受，但能替我感受吗？</span><span class="en">AI can describe my feelings — but can it feel them for me?</span></p>
-        </article>
-        <article class="return-card" tabindex="0">
-          <span class="rn">Return 02</span>
-          <h3><span class="zh">返回判断</span><span class="en">Return to Judgment</span></h3>
-          <p class="concept"><span class="zh">答案审计 · 价值排序 · 不确定性 · 签字权</span><span class="en">answer audit · value ordering · uncertainty · the right to sign</span></p>
-          <p class="q"><span class="zh">AI 可以给答案，但最后由谁签字？</span><span class="en">AI can give an answer — but who signs it in the end?</span></p>
-        </article>
-        <article class="return-card" tabindex="0">
-          <span class="rn">Return 03</span>
-          <h3><span class="zh">返回表达</span><span class="en">Return to Expression</span></h3>
-          <p class="concept"><span class="zh">作者性 · AI 写作 · 人机共创 · 作品解释权</span><span class="en">authorship · AI writing · co-creation · interpretive rights</span></p>
-          <p class="q"><span class="zh">AI 帮我写出来之后，这还是我的表达吗？</span><span class="en">After AI helps me write it, is it still my voice?</span></p>
-        </article>
-        <article class="return-card" tabindex="0">
-          <span class="rn">Return 04</span>
-          <h3><span class="zh">返回身体</span><span class="en">Return to the Body</span></h3>
-          <p class="concept"><span class="zh">可穿戴 · 情绪识别 · 脑机接口 · 具身自我</span><span class="en">wearables · affect recognition · BCI · the embodied self</span></p>
-          <p class="q"><span class="zh">设备说我焦虑，我该信设备，还是信身体？</span><span class="en">The device says I'm anxious — do I trust the device or the body?</span></p>
-        </article>
-        <article class="return-card" tabindex="0">
-          <span class="rn">Return 05</span>
-          <h3><span class="zh">返回关系</span><span class="en">Return to Relation</span></h3>
-          <p class="concept"><span class="zh">AI 陪伴 · 亲密关系 · 被理解感 · 真实共在</span><span class="en">AI companionship · intimacy · being understood · real presence</span></p>
-          <p class="q"><span class="zh">AI 可以陪伴我，但能替代真实的关系吗？</span><span class="en">AI can keep me company — but can it stand in for a real relationship?</span></p>
-        </article>
-        <article class="return-card" tabindex="0">
-          <span class="rn">Return 06</span>
-          <h3><span class="zh">返回行动</span><span class="en">Return to Action</span></h3>
-          <p class="concept"><span class="zh">Agent · 工具权限 · 授权边界 · 停止权</span><span class="en">agents · tool permissions · scope of delegation · the right to stop</span></p>
-          <p class="q"><span class="zh">AI 替我行动时，行动究竟属于谁？</span><span class="en">When AI acts for me, whose action is it?</span></p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap"><div class="rule"></div></div>
-
-  <!-- ── WORKSHOPS ── -->
-  <section id="workshops">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="eyebrow"><span class="zh">工作坊系列</span><span class="en">Workshop Series</span></div>
-        <div class="top"><h2><span class="zh">工作坊系列</span><span class="en">Workshop Series</span></h2></div>
-        <p class="desc">
-          <span class="zh">不是把理论讲给你听，而是通过站队、纸笔任务、身体练习、权限游戏与对话，让你亲自生成自己的判断。</span>
-          <span class="en">Not theory delivered to an audience — through taking sides, pen-and-paper tasks, body practices, permission games, and talk, you generate your own judgment.</span>
-        </p>
-      </div>
-      <div class="ws-grid reveal">
-        <article class="ws-card">
-          <div class="ws-meta"><span class="tag"><span class="zh">总论版</span><span class="en">General</span></span><span class="tag">90 min</span></div>
-          <h3><span class="zh">AI时代，人如何返回自身？</span><span class="en">How does a person return to themselves?</span></h3>
-          <p class="d"><span class="zh">从"被 AI 说中"进入，走过认知环境、判断力、感质主权与 Agent 边界，最后为自己生成一条 AI 协议。</span><span class="en">Start from being "read" by AI; move through the cognitive environment, judgment, qualia sovereignty, and agent limits; leave with your own AI protocol.</span></p>
-          <div class="steps"><span><span class="zh">意识切片实验</span><span class="en">consciousness slice</span></span><span><span class="zh">身体扫描</span><span class="en">body scan</span></span><span><span class="zh">权限游戏</span><span class="en">permission game</span></span></div>
-        </article>
-        <article class="ws-card">
-          <div class="ws-meta"><span class="tag"><span class="zh">创作者版</span><span class="en">Creator</span></span></div>
-          <h3><span class="zh">AI 写作之后，作品还属于我吗？</span><span class="en">After AI writing, is the work still mine?</span></h3>
-          <p class="d"><span class="zh">讨论作者性、训练数据、作品解释权与人机共创的边界。</span><span class="en">Authorship, training data, interpretive rights, and the edge of co-creation.</span></p>
-          <div class="steps"><span><span class="zh">人机共写</span><span class="en">co-writing</span></span><span><span class="zh">作者性投票</span><span class="en">authorship vote</span></span><span><span class="zh">作品协议卡</span><span class="en">license card</span></span></div>
-        </article>
-        <article class="ws-card">
-          <div class="ws-meta"><span class="tag"><span class="zh">自我认知版</span><span class="en">Self</span></span></div>
-          <h3><span class="zh">AI 越来越懂我，但它能替我理解自己吗？</span><span class="en">Can AI understand me for me?</span></h3>
-          <p class="d"><span class="zh">聚焦 AI 情绪分析、标签边界、身体确认与感质主权。</span><span class="en">Affect analysis, the limits of labels, bodily confirmation, and qualia sovereignty.</span></p>
-          <div class="steps"><span><span class="zh">解释权审计</span><span class="en">interpretation audit</span></span><span><span class="zh">意识切片</span><span class="en">consciousness slice</span></span><span><span class="zh">身体数据对照</span><span class="en">body-data check</span></span></div>
-        </article>
-        <article class="ws-card">
-          <div class="ws-meta"><span class="tag">Agent</span></div>
-          <h3><span class="zh">AI 开始替我行动，我的边界在哪里？</span><span class="en">AI acts for me — where is my line?</span></h3>
-          <p class="d"><span class="zh">从 Chatbot 到 Agent，讨论工具调用、账户权限、责任与停止机制。</span><span class="en">From chatbot to agent: tool calls, account permissions, responsibility, and stop mechanisms.</span></p>
-          <div class="steps"><span><span class="zh">权限阶梯</span><span class="en">permission ladder</span></span><span><span class="zh">责任地图</span><span class="en">responsibility map</span></span><span><span class="zh">退出机制</span><span class="en">exit design</span></span></div>
-        </article>
-        <article class="ws-card">
-          <div class="ws-meta"><span class="tag"><span class="zh">教育版</span><span class="en">Education</span></span></div>
-          <h3><span class="zh">学生如何不把判断力交给机器？</span><span class="en">How do students keep judgment from the machine?</span></h3>
-          <p class="d"><span class="zh">讨论 AI 学习助手、写作、元认知、学术诚信与判断力。</span><span class="en">AI study aids, writing, metacognition, academic integrity, and judgment.</span></p>
-          <div class="steps"><span><span class="zh">答案反证</span><span class="en">counter-evidence drill</span></span><span><span class="zh">判断签名</span><span class="en">judgment signature</span></span><span><span class="zh">学习者权利卡</span><span class="en">learner-rights card</span></span></div>
-        </article>
-        <article class="ws-card">
-          <div class="ws-meta"><span class="tag"><span class="zh">性别与平台版</span><span class="en">Gender & Platform</span></span></div>
-          <h3><span class="zh">AI 时代，女性如何不被算法定义？</span><span class="en">How to resist being defined by the algorithm?</span></h3>
-          <p class="d"><span class="zh">讨论身体想象、算法偏见、平台审美、表达权与数据权利。</span><span class="en">Body image, algorithmic bias, platform aesthetics, expression, and data rights.</span></p>
-          <div class="steps"><span><span class="zh">平台标签审计</span><span class="en">platform-label audit</span></span><span><span class="zh">身体主权讨论</span><span class="en">body-sovereignty talk</span></span><span><span class="zh">表达权协议</span><span class="en">expression protocol</span></span></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap"><div class="rule"></div></div>
-
-  <!-- ── DIALOGUES ── -->
-  <section id="dialogues">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="eyebrow"><span class="zh">嘉宾对谈</span><span class="en">Guest Dialogues</span></div>
-        <div class="top"><h2><span class="zh">嘉宾对谈</span><span class="en">Guest Dialogues</span></h2></div>
-        <p class="desc">
-          <span class="zh">每场由项目发起人主持，邀请技术、心理、教育、法律、创作与公共文化领域的嘉宾，形成跨学科交叉。</span>
-          <span class="en">Each hosted by the project's founder, bringing together guests from technology, psychology, education, law, creation, and public culture.</span>
-        </p>
-      </div>
-      <div class="dlg-list reveal">
-        <article class="dlg">
-          <span class="no">D01</span>
-          <h3><span class="zh">AI 越来越懂我，但它真的理解我吗？</span><span class="en">AI understands me more — but does it truly understand me?</span></h3>
-          <span class="role"><span class="zh">AI产品 × 心理 × 哲学</span><span class="en">product × psychology × philosophy</span></span>
-        </article>
-        <article class="dlg">
-          <span class="no">D02</span>
-          <h3><span class="zh">AI 写作之后，作者还存在吗？</span><span class="en">After AI writing, does the author still exist?</span></h3>
-          <span class="role"><span class="zh">作家 × 设计师 × 版权</span><span class="en">writer × designer × copyright</span></span>
-        </article>
-        <article class="dlg">
-          <span class="no">D03</span>
-          <h3><span class="zh">AI Agent 开始替人行动，谁来负责？</span><span class="en">Agents act for us — who is responsible?</span></h3>
-          <span class="role"><span class="zh">产品 × 法律 × 伦理</span><span class="en">product × law × ethics</span></span>
-        </article>
-        <article class="dlg">
-          <span class="no">D04</span>
-          <h3><span class="zh">AI 时代，身体还能作为真实现场吗？</span><span class="en">Can the body still be the real site?</span></h3>
-          <span class="role"><span class="zh">身心 × 神经科学 × 脑机接口</span><span class="en">mind-body × neuroscience × BCI</span></span>
-        </article>
-        <article class="dlg">
-          <span class="no">D05</span>
-          <h3><span class="zh">AI 时代，人的灵魂该如何被安放？</span><span class="en">Where do we place the soul now?</span></h3>
-          <span class="role"><span class="zh">哲学 × 艺术 × 公共文化</span><span class="en">philosophy × art × public culture</span></span>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap"><div class="rule"></div></div>
-
-  <!-- ── PIPELINE ── -->
-  <section id="research">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="eyebrow"><span class="zh">研究沉淀</span><span class="en">Research Output</span></div>
-        <div class="top"><h2><span class="zh">每场活动，都沉淀为研究。</span><span class="en">Every event settles into research.</span></h2></div>
-        <p class="desc">
-          <span class="zh">工作坊产生现场数据，对谈产生多元观点，研究形成方法，媒体扩大影响，档案持续保存并迭代这个项目的公共知识。</span>
-          <span class="en">Workshops yield field data; dialogues yield perspectives; research yields method; media extends reach; the archive keeps and iterates the project's public knowledge.</span>
-        </p>
-      </div>
-      <div class="pipe reveal">
-        <div class="pipe-step"><span class="pn">01</span><strong><span class="zh">工作坊</span><span class="en">Workshop</span></strong><p><span class="zh">互动数据 · 匿名填空 · 现场判断</span><span class="en">interaction data · fill-ins · live judgments</span></p></div>
-        <div class="pipe-step"><span class="pn">02</span><strong><span class="zh">对谈</span><span class="en">Dialogue</span></strong><p><span class="zh">专业观点 · 争议 · 跨学科回应</span><span class="en">expert views · disputes · replies</span></p></div>
-        <div class="pipe-step"><span class="pn">03</span><strong><span class="zh">研究</span><span class="en">Research</span></strong><p><span class="zh">观察报告 · 白皮书 · 方法论</span><span class="en">field reports · white papers · methods</span></p></div>
-        <div class="pipe-step"><span class="pn">04</span><strong><span class="zh">媒体</span><span class="en">Media</span></strong><p><span class="zh">短视频 · 播客 · 图文 · 长文</span><span class="en">clips · podcast · posts · essays</span></p></div>
-        <div class="pipe-step"><span class="pn">05</span><strong><span class="zh">档案</span><span class="en">Archive</span></strong><p><span class="zh">资料库 · 工具下载 · 项目存档</span><span class="en">library · downloads · record</span></p></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap"><div class="rule"></div></div>
-
-  <!-- ── TOOLKIT ── -->
-  <section id="toolkit">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="eyebrow"><span class="zh">工具包</span><span class="en">Toolkit</span></div>
-        <div class="top"><h2><span class="zh">把判断，带回日常。</span><span class="en">Take judgment back into daily life.</span></h2></div>
-        <p class="desc">
-          <span class="zh">工具不是测你"会不会正确使用 AI"，而是帮你分清：哪些可以交给 AI，哪些仍要亲自保留。</span>
-          <span class="en">These tools don't test whether you "use AI correctly." They help you tell apart what you can hand over — and what stays yours.</span>
-        </p>
-      </div>
-      <div class="tk-grid reveal">
-        <div class="proto">
-          <div class="eyebrow"><span class="zh">你的 AI 协议</span><span class="en">Your AI Protocol</span></div>
-          <h3><span class="zh">为自己写一条边界</span><span class="en">Write your own boundary</span></h3>
-          <p class="sub"><span class="zh">填两个空，生成一条属于你的使用边界，然后为它签字。</span><span class="en">Fill two blanks, generate a boundary of your own, and sign it.</span></p>
-          <div class="proto-line">
-            <input id="helpInput" maxlength="40" data-ph-zh="AI 可以帮我……" data-ph-en="AI can help me…" />
-            <input id="replaceInput" maxlength="40" data-ph-zh="但不能替我……" data-ph-en="but not, for me…" />
-          </div>
-          <div class="proto-out" id="protoOut"></div>
-          <div class="proto-sign" id="protoSign"><span class="ln"></span><span id="signText"></span></div>
-        </div>
-        <div class="tool-list">
-          <div class="tool"><div><strong><span class="zh">意识切片实验纸</span><span class="en">Consciousness-Slice Sheet</span></strong><span><span class="zh">保留有用的解释，划掉低配的命名</span><span class="en">keep useful readings, cross out lazy labels</span></span></div><span class="dl">↓</span></div>
-          <div class="tool"><div><strong><span class="zh">AI 答案审计卡</span><span class="en">AI Answer Audit Card</span></strong><span><span class="zh">它做了什么、默认了什么、遗漏了什么</span><span class="en">what it did, assumed, and left out</span></span></div><span class="dl">↓</span></div>
-          <div class="tool"><div><strong><span class="zh">Agent 权限边界卡</span><span class="en">Agent Permission Card</span></strong><span><span class="zh">授权、停止、退出与责任归属</span><span class="en">grant, stop, exit, responsibility</span></span></div><span class="dl">↓</span></div>
-          <div class="tool"><div><strong><span class="zh">身体数据确认卡</span><span class="en">Body-Data Confirmation Card</span></strong><span><span class="zh">设备给线索，主体保留解释权</span><span class="en">device offers clues, you keep the reading</span></span></div><span class="dl">↓</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap"><div class="rule"></div></div>
-
-  <!-- ── MEDIA ── -->
-  <section id="media">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="eyebrow"><span class="zh">媒体</span><span class="en">Media</span></div>
-        <div class="top"><h2><span class="zh">公共讨论，不在活动结束时停止。</span><span class="en">The conversation doesn't stop when the event ends.</span></h2></div>
-        <p class="desc">
-          <span class="zh">从现场的问题出发，持续形成联名图文、短视频、播客、访谈与研究长文。</span>
-          <span class="en">Starting from the questions raised on-site, it keeps becoming co-authored posts, clips, podcasts, interviews, and long-form research.</span>
-        </p>
-      </div>
-      <div class="media-grid reveal">
-        <article class="media-card">
-          <div><span class="mk"><span class="zh">小红书 / 图文</span><span class="en">Posts</span></span><h3><span class="zh">AI 可以帮我，<br>但不能替我。</span><span class="en">AI can help me,<br>not replace me.</span></h3></div>
-          <p><span class="zh">把复杂的技术哲学问题，转化为可保存、可转发、可讨论的公共内容。</span><span class="en">Turning dense techno-philosophy into public content you can save, share, and argue with.</span></p>
-        </article>
-        <article class="media-card">
-          <div><span class="mk"><span class="zh">播客 / 对谈</span><span class="en">Podcast</span></span><h3>Human Return<br>Dialogues</h3></div>
-          <p><span class="zh">邀请跨学科嘉宾，一起讨论 AI、身体、关系、创作、教育与责任。</span><span class="en">Cross-disciplinary guests on AI, body, relation, creation, education, and responsibility.</span></p>
-        </article>
-        <article class="media-card">
-          <div><span class="mk"><span class="zh">研究 / 长文</span><span class="en">Essays</span></span><h3><span class="zh">主体性返回<br>观察报告</span><span class="en">Returning Subjectivity<br>Field Notes</span></h3></div>
-          <p><span class="zh">把参与者的声音、现场的分歧与方法工具，沉淀为可引用、可复用的研究输出。</span><span class="en">Turning participant voices, live disagreements, and tools into citable, reusable research.</span></p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap"><div class="rule"></div></div>
-
-  <!-- ── COLLABORATE ── -->
-  <section id="collaborate">
-    <div class="wrap collab">
-      <div class="collab-main reveal">
-        <div class="eyebrow"><span class="zh">合作</span><span class="en">Collaborate</span></div>
-        <h2><span class="zh">一起搭建 AI 时代的主体性公共空间。</span><span class="en">Let's build a public space for subjectivity in the age of AI.</span></h2>
-        <p class="lead" style="font-size:17px">
-          <span class="zh">我们在找工作坊共创者、对谈嘉宾、研究伙伴、媒体伙伴与空间支持者。合作不是把主题变成广告，而是共同扩展这个问题的公共深度。</span>
-          <span class="en">We're looking for workshop co-creators, dialogue guests, research and media partners, and spaces to host. Collaboration isn't turning the theme into an ad — it's deepening the question, together.</span>
-        </p>
-        <div class="collab-types">
-          <span><span class="zh">工作坊联合主办</span><span class="en">Co-host a workshop</span></span>
-          <span><span class="zh">嘉宾对谈</span><span class="en">Dialogue guest</span></span>
-          <span><span class="zh">研究联名</span><span class="en">Joint research</span></span>
-          <span><span class="zh">媒体联名</span><span class="en">Media partner</span></span>
-          <span><span class="zh">校园与社群</span><span class="en">Campus & community</span></span>
-          <span><span class="zh">空间与品牌支持</span><span class="en">Space & brand</span></span>
-        </div>
-      </div>
-      <div class="contact reveal">
-        <div>
-          <div class="eyebrow"><span class="zh">开始一次对话</span><span class="en">Start a Conversation</span></div>
-          <h3><span class="zh">想一起办一场<br>Human Return 活动？</span><span class="en">Want to run a Human<br>Return event together?</span></h3>
-          <p class="cp"><span class="zh">欢迎带着你的专业视角、空间、社群或研究问题加入。</span><span class="en">Bring your expertise, your space, your community, or your research question.</span></p>
-        </div>
-        <div>
-          <div class="copy-row"><span class="wx"><span class="zh">微信</span><span class="en">WeChat</span>：<b id="wechatId">1106288060</b></span><button class="copy-btn" data-copy="1106288060"><span class="zh">复制</span><span class="en">Copy</span></button></div>
-          <div class="dir"><span class="zh">合作方向：工作坊 / 对谈 / 研究 / 媒体</span><span class="en">Directions: Workshop / Dialogue / Research / Media</span></div>
-          <div class="dir" style="color:var(--warm)"><span class="zh">首站合作空间：上海706青年空间</span><span class="en">First host: 706 Youth Space, Shanghai</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
+<section id="related">
+<div class="wrap">
+<p class="sec-eyebrow">Related work positioning</p>
+<h2>Adjacent to affective BCI and neurofeedback, but centered on participant-owned calibration.</h2>
+<p class="sub">BCI-HRP does not claim that sound, AI, or neural signals are new by themselves. Its contribution is the protocol arrangement: sound as probe, participant prediction first, phenomenological report, editable naming, and agency events as data.</p>
+<div class="grid">
+<div class="card"><span class="k">Adjacent field</span><h3>Affective BCI</h3><p>Often estimates, classifies, or adapts to affective states using neural, physiological, or behavioral signals. BCI-HRP instead asks how participants can predict, report, revise, and own the meaning of felt states.</p></div>
+<div class="card"><span class="k">Adjacent field</span><h3>Brain-computer music interfaces</h3><p>Often map brain or affective signals to musical feedback or generation. BCI-HRP treats sound first as a controlled probe for calibration, not as an automatic mood-regulation output.</p></div>
+<div class="card"><span class="k">Adjacent field</span><h3>EEG / fNIRS music-emotion studies</h3><p>Often analyze responses to music or sound through valence, arousal, attention, or neural/hemodynamic features. BCI-HRP adds first-person prediction, action tendency, object relation, and fittingness as calibration materials.</p></div>
+<div class="card"><span class="k">Adjacent field</span><h3>Neurofeedback and biofeedback</h3><p>Often train users toward calm, focus, or coherence. BCI-HRP does not optimize for a single “good” state; it tests whether participants can better understand and revise their own affective-action structure.</p></div>
+</div>
+<div class="note data-clarify">
+<span class="k">Differentiation boundary</span>
+<p>The project should not be described as “music + BCI + emotion regulation” alone. That space is already crowded. BCI-HRP is better positioned as a participant-centered calibration protocol for non-invasive affective BCI: optional EEG, fNIRS, HRV, or EDA remain proxies inside a user-owned interpretive workflow, not authorities over hidden emotion.</p>
+</div>
+</div>
+</section>
+<section id="safety">
+<div class="wrap">
+<p class="sec-eyebrow">Safety interaction flow</p>
+<h2>Ethics must appear as interaction, not only as principle.</h2>
+<div class="steps">
+<div class="step"><div class="n">1</div><div><h3>Consent gate</h3><p>The user chooses sound family, intensity ceiling, stop method, data sharing, and whether AI summaries are allowed.</p></div></div>
+<div class="step"><div class="n">2</div><div><h3>Persistent controls</h3><p>Stop, Ground, Volume Down, Skip, and Delete stay visible before, during, and after playback.</p></div></div>
+<div class="step"><div class="n">3</div><div><h3>Auto-pause triggers</h3><p>Unsafe self-report, repeated stop gestures, non-response, rapid discomfort increase, or a lab-defined physiology threshold.</p></div></div>
+<div class="step"><div class="n">4</div><div><h3>Grounding mode</h3><p>Fade out sound, suppress interpretation, show a grounding prompt, offer a researcher check-in.</p></div></div>
+<div class="step"><div class="n">5</div><div><h3>No crisis system</h3><p>This is not emergency detection or therapy. High-risk disclosures leave the protocol and follow lab-approved human safety procedures.</p></div></div>
+</div>
+<div class="grid" style="margin-top:14px">
+<div class="card"><span class="k">UI requirement</span><h3>Always-visible exit</h3><p>Stop is larger than decorative controls, keyboard/touch accessible, and logged as a valid outcome — not a failure.</p></div>
+<div class="card"><span class="k">UI requirement</span><h3>No post-trigger analysis</h3><p>If grounding mode triggers, the system produces no deep interpretation — only a summary of the user's own safety actions.</p></div>
+<div class="card"><span class="k">UI requirement</span><h3>Agency as data</h3><p>Reject, rename, stop, delete, and skip are core interaction events, not afterthoughts.</p></div>
+</div>
+</div>
+</section>
+<section id="faq">
+<div class="wrap">
+<p class="sec-eyebrow">FAQ</p>
+<h2>Short answers for collaborators.</h2>
+<p class="sub">This section translates the protocol into direct questions without replacing the formal research brief above.</p>
+<div class="qa-list">
+<div class="qa"><h3>Is this a treatment or diagnostic study?</h3><p>No. BCI-HRP is a non-diagnostic, non-treatment research proposal. It does not claim clinical benefit, crisis detection, or state induction.</p></div>
+<div class="qa"><h3>Is BCI-HRP just a meditation app?</h3><p>No. Meditation often trains attention, calm, or regulation. BCI-HRP trains interoceptive prediction, bodily-affective awareness, and interpretive agency: participants predict, sense, name, revise, and own their state descriptions.</p></div>
+<div class="qa"><h3>Is this already a wearable product?</h3><p>No. The current study is a Phase 0 software protocol. The long-range translational pathway may include AI headphones, a wristband, and an optional head patch, but hardware is staged and not required for the first lab study.</p></div>
+<div class="qa"><h3>Does Phase 0 require custom BCI hardware?</h3><p>No. Phase 0 is a software protocol: self-prediction, sound probe, post-report, editable naming, and agency-event logging. Custom BCI hardware is future-facing and not required for the first pilot.</p></div>
+<div class="qa"><h3>What is self-calibration?</h3><p>Self-calibration is operationalized as within-person change in prediction error between pre-probe predicted state vectors and post-probe reported state vectors, supported by secondary measures such as naming stability, qualia granularity, and agency events.</p></div>
+<div class="qa"><h3>Does lower prediction error prove self-calibration?</h3><p>No. Lower prediction error is only a candidate indicator. A self-calibration interpretation requires triangulation across qualia granularity, naming stability, action-tendency clarity, object/fittingness reports, agency events, transfer to novel stimuli, and suspicion checks.</p></div>
+<div class="qa"><h3>What is Human Return?</h3><p>Human Return refers to keeping the participant's own interpretation central: AI summaries are editable, rejectable, and deletable; physiological and neural signals remain optional proxies rather than hidden truth.</p></div>
+<div class="qa"><h3>Does BCI-HRP aim to make participants feel positive emotion?</h3><p>No. The protocol does not aim to induce positive emotion. It tests whether participants can better identify how a felt state relates to bodily change, action tendency, object relation, and situation fit.</p></div>
+<div class="qa"><h3>What is affective-action calibration?</h3><p>Affective-action calibration means tracking whether a participant can better relate bodily feeling, felt quality, action tendency, emotional object, and fittingness across sessions. It is a supplement to prediction-error analysis, not a clinical outcome claim.</p></div>
+<div class="qa"><h3>How is this different from conventional BCI?</h3><p>Conventional BCI often emphasizes external task control or signal decoding, such as motor intention or visual-evoked control. BCI-HRP focuses on interpretive agency and affective-action calibration over endogenous experience: how people predict, name, revise, and own the meaning of their internal state descriptions.</p></div>
+<div class="qa"><h3>Is this already covered by affective BCI or neurofeedback?</h3><p>Partly adjacent, but not identical. BCI-HRP is close to affective BCI, brain-computer music interfaces, EEG/fNIRS music-emotion studies, and neurofeedback. Its differentiating object is participant-owned calibration: sound as probe, self-prediction, phenomenological report, editable AI naming, and reject / rename / edit / delete as agency data.</p></div>
+<div class="qa"><h3>What can a partner PI modify?</h3><p>A partner PI can lead experimental design, stimulus selection, recruitment, safety review, IRB pathway, analysis plan, and preregistration. The PI can narrow, rename, split, or reject the core constructs.</p></div>
+</div>
+</div>
+</section>
+<section id="materials">
+<div class="wrap">
+<p class="sec-eyebrow">Research materials stack</p>
+<h2>The site is the entrance; the materials make the project research-ready.</h2>
+<p class="sub">Collaboration drafts — a protocol brief, data schema, stimulus documentation, safety flow, references, and an open-science scaffold. These are drafts, not IRB-approved documents.</p>
+<div class="note data-clarify">
+<span class="k">File map</span>
+<p><b>Public materials are limited to protocol templates and collaboration drafts.</b> These are draft materials for lab review, not IRB-approved study documents.</p>
+</div>
+<div class="files">
+<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/protocol_brief.md" rel="noopener" target="_blank">protocol_brief.md ↗</a><span>English research question, hypotheses, outcomes, confounds, safety, and lab decisions.</span></div>
+<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/protocol_brief_zh.md" rel="noopener" target="_blank">protocol_brief_zh.md ↗</a><span>Chinese protocol brief — research question, hypotheses, outcome measures, confounds, safety boundary, and lab decision points.</span></div>
+<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/data_schema.csv" rel="noopener" target="_blank">data_schema.csv ↗</a><span>Field template for future studies — not collected study data.</span></div>
+<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/stimulus_sheet_template.csv" rel="noopener" target="_blank">stimulus_sheet_template.csv ↗</a><span>Sound family, file hash, loudness, events, source, license, notes.</span></div>
+<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/safety_flow.md" rel="noopener" target="_blank">safety_flow.md ↗</a><span>Consent gate, persistent controls, auto-pause, grounding mode, no-crisis boundary.</span></div>
+<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/safety_flow_zh.md" rel="noopener" target="_blank">safety_flow_zh.md ↗</a><span>Chinese safety interaction flow.</span></div>
+<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/osf_structure.md" rel="noopener" target="_blank">osf_structure.md ↗</a><span>Suggested wiki, files, components, and access settings.</span></div>
+<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/references.bib" rel="noopener" target="_blank">references.bib ↗</a><span>Starter BibTeX: interoception, allostasis, constructed emotion, predictive processing, personal informatics.</span></div>
+<div class="file"><a href="https://mellowwei.github.io/BCI-HRP-Lab/README.md" rel="noopener" target="_blank">README.md ↗</a><span>File list and boundary statement.</span></div>
+</div>
+<div class="note"><p style="font-size:13px; color:var(--muted); margin:0">All materials are collaboration drafts meant to make the first PI conversation concrete — not to bypass lab review, preregistration, IRB, or safety approval. Any study with human participants must be redesigned and approved with the partner lab.</p></div>
+</div>
+</section>
+<section id="about">
+<div class="wrap">
+<p class="sec-eyebrow">About the researcher</p>
+<h2>Who is proposing this.</h2>
+<div class="body">
+<p style="font-size:16px; font-weight:600; color:var(--ink); margin-bottom:4px">Wei Jueran (魏珏然) · Mellow</p>
+<p>Master's researcher in Learning Sciences and Technologies at the University of Pennsylvania Graduate School of Education. I work across learning sciences, human–computer interaction, and sound studies, with a focus on <b>interpretive agency</b>: how people keep authorship over the meaning of their own bodily and cognitive states when systems — sensors, AI — try to name those states for them.</p>
+<p>For this protocol specifically, my non-substitutable contribution is <b>sound design</b> — era- and genre-specific acoustic material treated as controlled probes — combined with <b>anti-suggestion interaction ethics</b>: designing so that AI hypotheses stay editable, rejectable, and never overwrite the user's own account.</p>
+</div>
+<p class="sec-eyebrow" style="margin-top:26px">Affiliation &amp; contact</p>
+<div class="contact">
+<div class="row"><div class="k">Program</div><div class="v">M.S.Ed. in Learning Sciences and Technologies, Penn GSE · 08/2024–12/2026 (expected)</div></div>
+<div class="row"><div class="k">Advisor</div><div class="v">Susan A. Yoon</div></div>
+<div class="row"><div class="k">Email</div><div class="v"><a href="mailto:jueran@upenn.edu">jueran@upenn.edu</a></div></div>
+<div class="row"><div class="k">CV</div><div class="v"><a href="https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view" rel="noopener" target="_blank">View CV (PDF) ↗</a></div></div>
+</div>
+<div class="note"><p style="font-size:13px; color:var(--muted); margin:0">This is an independent research proposal. It is not presented on behalf of any lab. Any formal human-subjects study would require the appropriate IRB determination or approval before recruitment or data collection.</p></div>
+</div>
+</section>
+<section id="writing">
+<div class="wrap">
+<p class="sec-eyebrow">Writing / working papers</p>
+<h2>What you can read to assess the thinking.</h2>
+<p class="sub">Working papers, labeled by status. Nothing below is peer-reviewed unless explicitly marked.</p>
+<div class="grid">
+<div class="card">
+<span class="k">Working paper</span>
+<h3>Interpretive self-determination in learning analytics</h3>
+<p>On whether learners retain interpretive authority over analytics about themselves, rather than being defined by the system's labels. Directly motivates the editable-naming and interpretive-agency design in this protocol.<br/><br/><i>Status: in preparation · draft available on request.</i></p>
+</div>
+<div class="card">
+<span class="k">Research concept</span>
+<h3>Acoustic Familiarity Memory Return (AFMR)</h3>
+<p>A narrow, non-referential acoustic-cue concept for familiarity-before-recall in older adults, with anti-suggestion safeguards — a focused application of the same sound-probe + interpretive-agency logic.<br/><br/><i>Status: concept note in development · draft available on request.</i></p>
+</div>
+</div>
+</div>
+</section>
+<section id="collaborate">
+<div class="wrap">
+<p class="sec-eyebrow">Collaboration model</p>
+<h2>A division of work, not a request for lab endorsement.</h2>
+<div class="two">
+<div class="panel">
+<h3>What I bring</h3>
+<ul class="plain">
+<li>The Human Return / self-calibration construct and interpretive-agency interaction logic.</li>
+<li>Sound-probe stimulus design and the qualia-naming prompt framework.</li>
+<li>Protocol software implementation, data schema, and exportable session logs.</li>
+<li>Qualitative prompt framework and coding framework.</li>
+<li>Lead work on data analysis, visualization, and manuscript drafting.</li>
+</ul>
+</div>
+<div class="panel">
+<h3>What a partner lab provides</h3>
+<ul class="plain">
+<li>Methodological guidance on study design, statistics, counterbalancing, and preregistration.</li>
+<li>Safety review and guidance on the appropriate IRB pathway or determination.</li>
+<li>Faculty oversight if a formal study is pursued under the lab's institutional context.</li>
+<li>Feedback on whether the construct should be narrowed, renamed, split, or rejected.</li>
+<li>Guidance on compliant recruitment pathways, without requiring lab recruitment labor for the initial Phase 0 pilot.</li>
+<li>For Phase 0b or later: recruitment infrastructure, physical space, equipment, or RA support only if scaling is mutually agreed.</li>
+</ul>
+</div>
+</div>
+<p class="sec-eyebrow" style="margin-top:34px">First ask</p>
+<h2>A 15-minute fit call.</h2>
+<div class="body">
+<p>I am looking for a 15-minute fit call to determine whether BCI-HRP should be narrowed into a Phase 0 HCI, personal informatics, music cognition, affective computing, or wearable-sensing feasibility study.</p>
+<p>This is not a funding ask, hardware ask, or request for lab space, equipment, RA support, or a large sample upfront. For the initial Phase 0 feasibility pilot, I would handle the implementation, scheduling, session running, data handling, analysis, and drafting, subject to the appropriate IRB determination or approval.</p>
+<p>The goal of the first call is to test fit, clarify methodological and compliance scope, and decide whether the construct should be narrowed, renamed, or rejected. If Phase 0 is feasible, a later Phase 0b conversation could address whether the lab can support an expanded sample.</p>
+</div>
+<div class="contact" style="margin-top:14px">
+<div class="row"><div class="k">Contact</div><div class="v"><a href="mailto:jueran@upenn.edu">jueran@upenn.edu</a></div></div>
+<div class="row"><div class="k">Project brief</div><div class="v"><a href="https://mellowwei.github.io/BCI-HRP-Lab/index.html" target="_blank" rel="noopener">BCI-HRP // Human Return Protocol ↗</a></div></div>
+<div class="row"><div class="k">CV</div><div class="v"><a href="https://drive.google.com/file/d/1z2BKS_LPnzErweLaNLFRQCsA23aJAvRU/view" target="_blank" rel="noopener">View CV (PDF) ↗</a></div></div>
+</div>
+<div class="note">
+<span class="k">Boundary</span>
+<p>Implementation-specific details, lab-resource questions, and IP / ownership boundaries can be clarified after an initial fit call.</p>
+</div>
+</div>
+</section>
 <footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a class="brand" href="#top"><span class="glyph" aria-hidden="true"></span><span>Human Return Lab</span></a>
-        <p><span class="zh">AI时代，人如何返回自身？</span><span class="en">How does a person return to themselves in the age of AI?</span></p>
-      </div>
-      <div class="foot-quote">
-        <span class="zh">真正好的 AI，不是让人更像机器，而是帮助人更清醒地成为人。</span>
-        <span class="en">Good AI doesn't make people more like machines — it helps people become, more clearly, themselves.</span>
-      </div>
-    </div>
-    <div class="foot-slogan">
-      <span class="zh">持续回到自己 —— 一次次被带走，又一次次回来。</span>
-      <span class="en">Keep returning to yourself — carried off again and again, and coming back again and again.</span>
-    </div>
-  </div>
+<div class="wrap">
+<span class="mono">© 2026 Wei Jueran / Mellow Wei. BCI-HRP // Human Return Protocol · protocol-first · non-diagnostic · non-treatment</span>
+<span><a href="#top">Back to top ↑</a> · <a href="https://mellowwei.github.io/BCI-HRP-Lab/zh.html">中文</a></span>
+</div>
 </footer>
 
-<script>
-  const body=document.body;
-
-  // ── protocol elements (declared before any call that uses them) ──
-  const help=document.getElementById('helpInput'),
-        rep=document.getElementById('replaceInput'),
-        out=document.getElementById('protoOut'),
-        sign=document.getElementById('protoSign'),
-        signText=document.getElementById('signText');
-  function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-  function updateProtocol(){
-    const en=body.classList.contains('lang-en');
-    const blank=en?'______':'＿＿＿＿';
-    const h=(help.value.trim()||blank),r=(rep.value.trim()||blank);
-    out.innerHTML=en
-      ? `AI can help me <b>${escapeHtml(h)}</b>, but not <b>${escapeHtml(r)}</b>, for me.`
-      : `AI 可以帮我 <b>${escapeHtml(h)}</b>，但不能替我 <b>${escapeHtml(r)}</b>。`;
-    const done=help.value.trim()&&rep.value.trim();
-    sign.classList.toggle('on',!!done);
-    if(done){
-      const d=new Date(),ds=d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0');
-      signText.textContent=(en?'signed · ':'已签字 · ')+ds;
-    }else{
-      signText.textContent=en?'fill both to sign':'填满两格即可签字';
-    }
-  }
-
-  // ── language ──
-  function applyPlaceholders(){
-    const en=body.classList.contains('lang-en');
-    document.querySelectorAll('[data-ph-zh]').forEach(el=>{el.placeholder=en?el.dataset.phEn:el.dataset.phZh});
-  }
-  function setLang(lang,push){
-    const en=lang==='en';
-    body.classList.toggle('lang-en',en);
-    body.classList.toggle('lang-zh',!en);
-    document.documentElement.lang=en?'en':'zh';
-    applyPlaceholders();
-    updateProtocol();
-    if(push){const u=new URL(location);u.searchParams.set('lang',lang);history.replaceState({},'',u)}
-  }
-  const params=new URLSearchParams(location.search);
-  setLang(params.get('lang')==='en'?'en':'zh',false);
-  document.getElementById('langBtn').addEventListener('click',()=>{
-    setLang(body.classList.contains('lang-en')?'zh':'en',true);
-  });
-
-  // ── header / nav ──
-  const header=document.getElementById('header');
-  addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>16),{passive:true});
-  const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
-  menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-
-  // ── reveal (content is visible by default; this only adds the entrance animation) ──
-  document.documentElement.classList.add('ready');
-  const io=new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}
-  }),{threshold:0.08,rootMargin:'0px 0px -6% 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  // safety net: never leave anything hidden
-  setTimeout(()=>document.querySelectorAll('.reveal:not(.visible)').forEach(el=>el.classList.add('visible')),1600);
-
-  // ── framework select ──
-  document.querySelectorAll('.return-card').forEach(c=>{
-    const act=()=>{document.querySelectorAll('.return-card').forEach(x=>x.classList.remove('active'));c.classList.add('active')};
-    c.addEventListener('click',act);
-    c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act()}});
-  });
-
-  // ── protocol listeners ──
-  help.addEventListener('input',updateProtocol);
-  rep.addEventListener('input',updateProtocol);
-  updateProtocol();
-
-  // ── copy ──
-  document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{
-    const en=body.classList.contains('lang-en');
-    try{await navigator.clipboard.writeText(b.dataset.copy);
-      const prev=b.innerHTML;b.textContent=en?'Copied':'已复制';setTimeout(()=>b.innerHTML=prev,1300);
-    }catch(e){b.textContent=en?'Copy manually':'请手动复制'}
-  }));
-
-  // ── reduced motion: stop the returning-dot ──
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('svg animate').forEach(a=>a.remove());
-  }
-</script>
 </body>
 </html>
